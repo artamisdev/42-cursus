@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/13 19:59:25 by tacampos         ###   ########.fr       */
+/*   Created: 2023/09/13 21:14:24 by tacampos          #+#    #+#             */
+/*   Updated: 2023/09/13 21:32:00 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*#include <stdio.h>*/
 
-int	ft_isalpha(int c)
+int	ft_toupper(int c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }
 
 /*int	main(void)
 {
-	int	x;
-	int	z;
+	int	i;
 
-	x = 'F';
-	z = '3';
-	printf("Result 1: %d\n", ft_isalpha(x));
-	printf("Result 2: %d", ft_isalpha(z));
-	printf("\n");
+	i = 'a';
+	printf("Result: %c\n", ft_toupper(i));
 }*/

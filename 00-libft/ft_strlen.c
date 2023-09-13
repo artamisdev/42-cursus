@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/13 19:59:25 by tacampos         ###   ########.fr       */
+/*   Created: 2023/09/13 20:04:47 by tacampos          #+#    #+#             */
+/*   Updated: 2023/09/13 20:35:44 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*#include <stdio.h>
+#include <string.h>*/
 
-/*#include <stdio.h>*/
-
-int	ft_isalpha(int c)
+size_t	ft_strlen(const char *s)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 
 /*int	main(void)
 {
-	int	x;
-	int	z;
-
-	x = 'F';
-	z = '3';
-	printf("Result 1: %d\n", ft_isalpha(x));
-	printf("Result 2: %d", ft_isalpha(z));
-	printf("\n");
+	printf("ft_strlen: %zu\n", ft_strlen("I'm always angry."));
+	printf("strlen: %lu\n", strlen("I'm always angry."));
+	return (0);
 }*/
