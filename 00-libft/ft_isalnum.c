@@ -1,5 +1,16 @@
-#include <stdio.h>
-#include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/22 11:56:33 by tacampos          #+#    #+#             */
+/*   Updated: 2023/09/22 11:58:59 by tacampos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+/*#include <stdio.h>
+#include <ctype.h>*/
 
 static int	ft_isdigit(int c)
 {
@@ -16,14 +27,14 @@ static int	ft_isalpha(int c)
 		return (0);
 }
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
-    if (ft_isalpha(c) || ft_isdigit(c))
-        return (1);
-    return (0);
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
 }
 
-int main(void)
+/*int	main(void)
 {
 	int i;
 	int j;
@@ -44,4 +55,4 @@ int main(void)
 	printf("Result: %d\n", ft_isalnum(x));
 	printf("Result: %d\n", ft_isalnum(z));
 
-}
+}*/
