@@ -6,13 +6,13 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:23:35 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/26 18:24:17 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:20:31 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <string.h>
+/*#include <stdio.h>
+#include <string.h>*/
 
-size_t  ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	unsigned int	i;
 	size_t			src_len;
@@ -32,7 +32,7 @@ size_t  ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (src_len);
 }
 
-int main(void)
+/*int main(void)
 {
 	char	i[] = "Primeira";
 	char	j[] = "Segunda";
@@ -41,4 +41,4 @@ int main(void)
 
 	printf("Result: %lu\n", ft_strlcpy(i, j, 4));
 	printf("Result: %zu\n", strlcpy(x, z, 4));
-}
+}*/
