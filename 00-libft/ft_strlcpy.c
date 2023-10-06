@@ -1,52 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 16:39:22 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/26 18:36:13 by tacampos         ###   ########.fr       */
+/*   Created: 2023/09/26 17:23:35 by tacampos          #+#    #+#             */
+/*   Updated: 2023/09/26 18:24:17 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>*/
+#include <stdio.h>
+#include <string.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+size_t  ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t		i;
-	char		*dest;
-	const char	*source;
+	unsigned int	i;
+	size_t			src_len;
 
-	if (!dst && !src)
-		return (0);
-	dest = dst;
-	source = src;
-	if (dest > source)
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (dstsize == 0)
+		return (src_len);
+	i = 0;
+	while (i < dstsize - 1 && src[i])
 	{
-		while (len--)
-			dest[len] = source[len];
+		dst[i] = src[i];
+		i++;
 	}
-	else
-	{
-		i = 0;
-		while (i < len)
-		{
-			dest[i] = source[i];
-			i++;
-		}
-	}
-	return (dst);
+	dst[i] = '\0';
+	return (src_len);
 }
 
-/*int main(void)
+int main(void)
 {
 	char	i[] = "Primeira";
 	char	j[] = "Segunda";
 	char	x[] = "Primeira";
 	char	z[] = "Segunda";
-	
-	printf("Result: %s\n", ft_memmove(i, j, 9));
-	printf("Result: %s\n", memmove(x, z, 9));
 
-}*/
+	printf("Result: %lu\n", ft_strlcpy(i, j, 4));
+	printf("Result: %zu\n", strlcpy(x, z, 4));
+}
