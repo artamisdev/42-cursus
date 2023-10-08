@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:03:27 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/08 17:17:54 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:22:34 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -22,7 +22,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	c1 = s1[0];
 	c2 = s2[0];
-	while (i < n && c1 && c2 && c1== c2)
+	while (i < n && c1 && c2 && c1 == c2)
 	{
 		c1 = s1[i];
 		c2 = s2[i];
