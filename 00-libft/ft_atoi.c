@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:51:43 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:36:14 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 20:40:55 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -50,6 +50,7 @@ int	ft_atoi(const char *str)
 }
 
 /*#include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
