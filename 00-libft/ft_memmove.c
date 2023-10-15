@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:39:22 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/26 18:36:13 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:58:26 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>*/
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -39,7 +38,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-/*int main(void)
+/*#include <stdio.h>
+#include <string.h>
+
+int main(void)
 {
 	char	i[] = "Primeira";
 	char	j[] = "Segunda";

@@ -6,26 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 11:56:33 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/22 11:58:59 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:43:43 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <ctype.h>*/
-
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-static int	ft_isalpha(int c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
-}
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {
@@ -34,7 +18,10 @@ int	ft_isalnum(int c)
 	return (0);
 }
 
-/*int	main(void)
+/*#include <stdio.h>
+#include <ctype.h>
+
+int	main(void)
 {
 	int i;
 	int j;

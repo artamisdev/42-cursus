@@ -6,10 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:51:43 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/12 17:00:26 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:36:14 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
 static int	is_space(char c)
 {
@@ -19,13 +19,6 @@ static int	is_space(char c)
 		|| c == '\f'
 		|| c == '\r'
 		|| c == ' ')
-		return (1);
-	return (0);
-}
-
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }

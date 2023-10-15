@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 12:08:15 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/22 12:23:34 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:51:49 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <ctype.h>*/
+#include "libft.h"
 
 int	ft_isascii(int c)
 {
@@ -19,7 +18,10 @@ int	ft_isascii(int c)
 	return (0);
 }
 
-/*int	main(void)
+/*#include <stdio.h>
+#include <ctype.h>
+
+int	main(void)
 {
 	int x;
 

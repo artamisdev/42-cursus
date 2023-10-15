@@ -6,22 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:49:55 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 17:47:08 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:11:40 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-
-static size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 static char	*ft_strcpy(char *dest, char *src)
 {
@@ -51,13 +39,19 @@ char	*ft_strdup(const char *s1)
 }
 
 /*#include <stdio.h>
+#include <string.h>
+
 int	main(void)
 {
 	char	src[] = "This is the copy";
-	char	*copy;
+	char	*copy1;
+	char	*copy2;
    
-	copy = ft_strdup(src);
+	copy1 = strdup(src);
+	copy2 = ft_strdup(src);
+
 	src[3] = 'a';
 	printf("Result_src: %s\n", src);
-	printf("Result_copy: %s\n", copy);
+	printf("Result_strdup: %s\n", copy1);
+	printf("Result_ft: %s\n", copy2);
 }*/

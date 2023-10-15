@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:33:31 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/26 12:13:01 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:01:39 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>*/
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -27,9 +26,13 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-/*int main(void)
+/*#include <stdio.h>
+#include <string.h>
+
+int main(void)
 {
 	char	i[] = "you got this!";
 	
-	printf("Result: %s\n", ft_memset(i, 'H', 6));
+	printf("Result_ft: %s\n", ft_memset(i, 'H', 6));
+	printf("Result_memset: %s\n", memset(i, 'H', 6));
 }*/

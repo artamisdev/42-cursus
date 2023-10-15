@@ -6,23 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:48:44 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/06 18:33:45 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:13:52 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>*/
-
-static size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -44,13 +31,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dst_len + src_len);
 }
 
-/*int main(void)
+/*#include <stdio.h>
+#include <string.h>
+
+int main(void)
 {
 	char		dst_a[20] = "Primeira";
 	const char	src_a[] = "&Segunda";
 	char		dst_b[20] = "Primeira";
 	const char	src_b[] = "&Segunda";
 	
-	printf("Result: %zu\n", ft_strlcat(dst_a, src_a, 17));
-	printf("Result: %zu\n", strlcat(dst_b, src_b, 17));
+	printf("Result_ft: %zu\n", ft_strlcat(dst_a, src_a, 17));
+	printf("Result_strlcat: %zu\n", strlcat(dst_b, src_b, 17));
 }*/

@@ -6,9 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 19:06:50 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/06 20:14:22 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:03:22 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -30,8 +31,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-/*#include <stdlib.h>
-#include <stdio.h>
+/*#include <stdio.h>
 #include <string.h>
 
 int main(void)
@@ -39,6 +39,6 @@ int main(void)
 	const char	a[] = "All we need is hope";
 	const char	b[] = "All we need is hope";
 
-	printf("Result: %s\n", ft_strchr(a, 'h'));
-	printf("Result: %s\n", strchr(b, 'h'));
+	printf("Result_ft: %s\n", ft_strchr(a, 'h'));
+	printf("Result_strchr: %s\n", strchr(b, 'h'));
 }*/

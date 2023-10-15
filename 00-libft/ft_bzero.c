@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:15:48 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/26 14:37:40 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:38:03 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>*/
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -26,7 +25,9 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-/*int	main(void)
+/*#include <stdio.h>
+#include <string.h>
+int	main(void)
 {
 	char	i[] = "Galera de cowboy";
 	char	j[] = "Galera de cowboy";

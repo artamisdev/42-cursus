@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 12:24:31 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/22 12:35:34 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:54:32 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <ctype.h>*/
+#include "libft.h"
 
 int	ft_isprint(int c)
 {
@@ -19,7 +18,10 @@ int	ft_isprint(int c)
 	return (0);
 }
 
-/*int	main(void)
+/*#include <stdio.h>
+#include <ctype.h>
+
+int	main(void)
 {
 	int	x;
 

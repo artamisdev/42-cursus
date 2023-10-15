@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:23:35 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/06 17:20:31 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:15:08 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>*/
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -32,13 +31,16 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (src_len);
 }
 
-/*int main(void)
+/*#include <stdio.h>
+#include <string.h>
+
+int main(void)
 {
 	char	i[] = "Primeira";
 	char	j[] = "Segunda";
 	char	x[] = "Primeira";
 	char	z[] = "Segunda";
 
-	printf("Result: %lu\n", ft_strlcpy(i, j, 4));
-	printf("Result: %zu\n", strlcpy(x, z, 4));
+	printf("Result_ft: %lu\n", ft_strlcpy(i, j, 4));
+	printf("Result_strlcpy: %zu\n", strlcpy(x, z, 4));
 }*/

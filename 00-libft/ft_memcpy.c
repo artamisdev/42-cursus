@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 10:59:28 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/26 11:30:18 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:57:25 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <string.h>*/
+#include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -31,7 +30,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-/*int main(void)
+/*#include <stdio.h>
+#include <string.h>
+
+int main(void)
 {
 	char	i[] = "12345";
 	char	j[] = "abcdef";

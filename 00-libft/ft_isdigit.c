@@ -6,11 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 19:25:37 by tacampos          #+#    #+#             */
-/*   Updated: 2023/09/14 19:52:13 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:52:48 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>
-#include <ctype.h>*/
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {
@@ -19,7 +18,10 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-/*int	main(void)
+/*#include <stdio.h>
+#include <ctype.h>
+
+int	main(void)
 {
 	int	a;
 	int	b;

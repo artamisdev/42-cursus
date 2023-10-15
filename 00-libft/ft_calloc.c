@@ -6,24 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:59:26 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/12 18:50:49 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:41:09 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-
-static void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	str = s;
-	while (i < n)
-	{
-		str[i] = 0;
-		i++;
-	}
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

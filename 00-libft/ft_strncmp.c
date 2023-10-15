@@ -6,10 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:03:27 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/08 17:23:55 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:25:08 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -47,12 +47,12 @@ int	main(void)
 	printf("Si el valor es negativo la primer string es mas pequeña.\n");
 	printf("Si el valor es zero, las strings son iguales.\n");
 	printf("\n");
-	printf("Result: %d\n", ft_strncmp(a, b, 6));
-	printf("Result: %d\n", strncmp(a, b, 6));
+	printf("Result_ft: %d\n", ft_strncmp(a, b, 6));
+	printf("Result_strncmp: %d\n", strncmp(a, b, 6));
 	printf("\n");
-		printf("Result: %d\n", ft_strncmp(c, d, 4));
-	printf("Result: %d\n", strncmp(c, d, 4));
+	printf("Result_ft: %d\n", ft_strncmp(c, d, 4));
+	printf("Result_strncmp: %d\n", strncmp(c, d, 4));
 	printf("\n");
-	printf("Result: %d\n", ft_strncmp(e, f, 10));
-	printf("Result: %d\n", strncmp(e, f, 10));
+	printf("Result_ft: %d\n", ft_strncmp(e, f, 10));
+	printf("Result_strncmp: %d\n", strncmp(e, f, 10));
 }*/

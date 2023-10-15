@@ -6,10 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:55:57 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/08 19:45:06 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:56:10 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

@@ -6,10 +6,10 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 17:26:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/08 18:46:28 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:55:34 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
