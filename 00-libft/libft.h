@@ -6,11 +6,12 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:28:03 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 19:40:00 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/15 21:03:49 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdlib.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
