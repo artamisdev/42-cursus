@@ -1,34 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 20:04:47 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 19:22:36 by tacampos         ###   ########.fr       */
+/*   Created: 2023/09/26 17:23:35 by tacampos          #+#    #+#             */
+/*   Updated: 2023/10/15 19:15:08 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	unsigned int	i;
+	size_t			src_len;
 
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (dstsize == 0)
+		return (src_len);
 	i = 0;
-	while (s[i] != '\0')
+	while (i < dstsize - 1 && src[i])
 	{
+		dst[i] = src[i];
 		i++;
 	}
-	return (i);
+	dst[i] = '\0';
+	return (src_len);
 }
 
 /*#include <stdio.h>
 #include <string.h>
 
-int	main(void)
+int main(void)
 {
-	printf("Result_ft: %zu\n", ft_strlen("I'm always angry."));
-	printf("Result_strlen: %lu\n", strlen("I'm always angry."));
-	return (0);
+	char	i[] = "Primeira";
+	char	j[] = "Segunda";
+	char	x[] = "Primeira";
+	char	z[] = "Segunda";
+
+	printf("Result_ft: %lu\n", ft_strlcpy(i, j, 4));
+	printf("Result_strlcpy: %zu\n", strlcpy(x, z, 4));
 }*/

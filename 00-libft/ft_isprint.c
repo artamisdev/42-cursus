@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:51:41 by tacampos         ###   ########.fr       */
+/*   Created: 2023/09/22 12:24:31 by tacampos          #+#    #+#             */
+/*   Updated: 2023/10/15 18:54:32 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_isprint(int c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	if (c >= 32 && c <= 126)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 /*#include <stdio.h>
@@ -25,13 +24,10 @@ int	ft_isalpha(int c)
 int	main(void)
 {
 	int	x;
-	int	z;
 
-	x = 'F';
-	z = '3';
-	printf("Result_ft: %d\n", ft_isalpha(x));
-	printf("Result_isalpha: %d\n", isalpha(x));
-	printf("\n");
-	printf("Result_ft: %d\n", ft_isalpha(z));
-	printf("Result_isalpha: %d\n", isalpha(z));
+	x = 32;
+
+	printf("Result: %d\n", ft_isprint(x));
+	printf("Result: %d\n", isprint(x));
+
 }*/

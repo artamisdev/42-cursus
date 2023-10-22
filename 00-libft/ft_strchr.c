@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:51:41 by tacampos         ###   ########.fr       */
+/*   Created: 2023/10/06 19:06:50 by tacampos          #+#    #+#             */
+/*   Updated: 2023/10/15 19:03:22 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strchr(const char *s, int c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	int		i;
+	char	*str;
+	char	chr;
+
+	i = 0;
+	str = (char *)s;
+	chr = c;
+	while (str[i])
+	{
+		if (str[i] == chr)
+			return (&str[i]);
+		i++;
+	}
+	if (chr == '\0')
+		return (&str[i]);
+	return (NULL);
 }
 
 /*#include <stdio.h>
-#include <ctype.h>
+#include <string.h>
 
-int	main(void)
+int main(void)
 {
-	int	x;
-	int	z;
+	const char	a[] = "All we need is hope";
+	const char	b[] = "All we need is hope";
 
-	x = 'F';
-	z = '3';
-	printf("Result_ft: %d\n", ft_isalpha(x));
-	printf("Result_isalpha: %d\n", isalpha(x));
-	printf("\n");
-	printf("Result_ft: %d\n", ft_isalpha(z));
-	printf("Result_isalpha: %d\n", isalpha(z));
+	printf("Result_ft: %s\n", ft_strchr(a, 'h'));
+	printf("Result_strchr: %s\n", strchr(b, 'h'));
 }*/

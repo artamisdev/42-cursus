@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:51:41 by tacampos         ###   ########.fr       */
+/*   Created: 2023/09/26 12:15:48 by tacampos          #+#    #+#             */
+/*   Updated: 2023/10/15 18:38:03 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_bzero(void *s, size_t n)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = s;
+	while (i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
 }
 
 /*#include <stdio.h>
-#include <ctype.h>
-
+#include <string.h>
 int	main(void)
 {
-	int	x;
-	int	z;
+	char	i[] = "Galera de cowboy";
+	char	j[] = "Galera de cowboy";
 
-	x = 'F';
-	z = '3';
-	printf("Result_ft: %d\n", ft_isalpha(x));
-	printf("Result_isalpha: %d\n", isalpha(x));
-	printf("\n");
-	printf("Result_ft: %d\n", ft_isalpha(z));
-	printf("Result_isalpha: %d\n", isalpha(z));
+	ft_bzero(i+3, 5);
+	printf("Result: %s\n", i);
+
+	bzero(j+3, 5);
+	printf("Result: %s\n", j);
 }*/

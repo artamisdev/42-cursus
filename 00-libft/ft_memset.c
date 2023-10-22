@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:51:41 by tacampos         ###   ########.fr       */
+/*   Created: 2023/09/26 11:33:31 by tacampos          #+#    #+#             */
+/*   Updated: 2023/10/15 19:01:39 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = b;
+	while (i < len)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (b);
 }
 
 /*#include <stdio.h>
-#include <ctype.h>
+#include <string.h>
 
-int	main(void)
+int main(void)
 {
-	int	x;
-	int	z;
-
-	x = 'F';
-	z = '3';
-	printf("Result_ft: %d\n", ft_isalpha(x));
-	printf("Result_isalpha: %d\n", isalpha(x));
-	printf("\n");
-	printf("Result_ft: %d\n", ft_isalpha(z));
-	printf("Result_isalpha: %d\n", isalpha(z));
+	char	i[] = "you got this!";
+	
+	printf("Result_ft: %s\n", ft_memset(i, 'H', 6));
+	printf("Result_memset: %s\n", memset(i, 'H', 6));
 }*/

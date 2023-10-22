@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:51:41 by tacampos         ###   ########.fr       */
+/*   Created: 2023/10/12 17:59:26 by tacampos          #+#    #+#             */
+/*   Updated: 2023/10/15 18:41:09 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	void	*allocated;
+
+	allocated = malloc(count * size);
+	if (!allocated)
+		return (NULL);
+	ft_bzero(allocated, size * count);
+	return (allocated);
 }
 
 /*#include <stdio.h>
-#include <ctype.h>
 
 int	main(void)
 {
-	int	x;
-	int	z;
+	char	*str = ft_calloc(6, sizeof(char));
 
-	x = 'F';
-	z = '3';
-	printf("Result_ft: %d\n", ft_isalpha(x));
-	printf("Result_isalpha: %d\n", isalpha(x));
-	printf("\n");
-	printf("Result_ft: %d\n", ft_isalpha(z));
-	printf("Result_isalpha: %d\n", isalpha(z));
+	str[0] = 'e';
+	str[1] = 'i';
+	str[2] = 't';
+	str[3] = 'a';
+
+	printf("Result_Calloc: \"%s\"\n", str);
 }*/

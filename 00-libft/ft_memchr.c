@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 19:43:18 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:51:41 by tacampos         ###   ########.fr       */
+/*   Created: 2023/10/08 17:26:18 by tacampos          #+#    #+#             */
+/*   Updated: 2023/10/15 18:55:34 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
+	size_t	i;
+	char	*str;
+	char	chr;
+
+	i = 0;
+	str = (char *)s;
+	chr = c;
+	while (i < n)
+	{
+		if (str[i] == chr)
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
 }
 
 /*#include <stdio.h>
-#include <ctype.h>
+#include <string.h>
 
-int	main(void)
+int main(void)
 {
-	int	x;
-	int	z;
+	const char	a[] = "That's all folks";
+	const char	b[] = "That's all folks";
 
-	x = 'F';
-	z = '3';
-	printf("Result_ft: %d\n", ft_isalpha(x));
-	printf("Result_isalpha: %d\n", isalpha(x));
-	printf("\n");
-	printf("Result_ft: %d\n", ft_isalpha(z));
-	printf("Result_isalpha: %d\n", isalpha(z));
+	printf("Result: %s\n", ft_memchr(a, 'f', 17));
+	printf("Result: %s\n", memchr(b, 'f', 17));
 }*/
