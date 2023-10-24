@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:55:57 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 18:56:10 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:51:23 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -34,17 +34,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (c1 - c2);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	const char	a[] = "That's all folks";
-	const char	b[] = "That's all folks";
-	const char	c[] = "That's it girl";
-	const char	d[] = "That's it girl";
-
-	printf("Result: %d\n", ft_memcmp(a, c, 16));
-	printf("Result: %d\n", memcmp(b, d, 16));
-}*/
