@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:48:44 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 19:13:52 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:12:59 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -30,17 +30,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char		dst_a[20] = "Primeira";
-	const char	src_a[] = "&Segunda";
-	char		dst_b[20] = "Primeira";
-	const char	src_b[] = "&Segunda";
-	
-	printf("Result_ft: %zu\n", ft_strlcat(dst_a, src_a, 17));
-	printf("Result_strlcat: %zu\n", strlcat(dst_b, src_b, 17));
-}*/
