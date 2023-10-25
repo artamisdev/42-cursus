@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:22:29 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 19:26:14 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:41:46 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -37,17 +37,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char	a[] = "Meu amor, voce me da sorte";
-	char	b[] = "Meu amor, voce me da sorte";
-	char	c[] = "voce";
-	char	d[] = "voce";
-
-	printf("Result_ft: %s\n", ft_strnstr(a, c, 20));
-	printf("Result_strnstr: %s\n", strnstr(b, d, 20));
-}*/
