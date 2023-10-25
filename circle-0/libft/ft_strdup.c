@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:49:55 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 19:11:40 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:06:32 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -37,21 +37,3 @@ char	*ft_strdup(const char *s1)
 	ft_strcpy(cpy, (char *)s1);
 	return (cpy);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	char	src[] = "This is the copy";
-	char	*copy1;
-	char	*copy2;
-   
-	copy1 = strdup(src);
-	copy2 = ft_strdup(src);
-
-	src[3] = 'a';
-	printf("Result_src: %s\n", src);
-	printf("Result_strdup: %s\n", copy1);
-	printf("Result_ft: %s\n", copy2);
-}*/
