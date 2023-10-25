@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 20:34:03 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/15 19:27:55 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:45:24 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -32,15 +32,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	const char	a[] = "I'm always hungry";
-	const char	b[] = "I'm always hungry";
-
-	printf("Result_ft: %s\n", ft_strrchr(a, 'y'));
-	printf("Result_strrchr: %s\n", strrchr(b, 'y'));
-}*/
