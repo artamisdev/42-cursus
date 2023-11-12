@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:28:03 by tacampos          #+#    #+#             */
-/*   Updated: 2023/11/12 15:27:45 by tacampos         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:11:37 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -56,5 +56,6 @@ typedef struct s_list
 }	t_list;
 
 t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 
 #endif
