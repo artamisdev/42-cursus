@@ -11,8 +11,6 @@ RM = rm -rf
 
 all: libft $(NAME)
 
-bonus: all
-
 libft:
 	make -C ./libft all
 
