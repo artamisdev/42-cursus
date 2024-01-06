@@ -15,9 +15,9 @@
 static formats_check(va_list *args, char format)
 {
     if (format == 'c')
-        //tipo char
+        ft_putchar_fd(va_arg(args,char), 1);
     if (format == 's')
-        //tipo string
+        //ft_putstr_fd()
     if (format == 'p')
         //tipo void *
     if (format == 'd')
@@ -47,9 +47,8 @@ int	ft_printf(char const *format, ...)
         if (format[i] == '%')
         {
             //chamo a funçao de checar
-            //checar e printar de acordo com o tipo elegido
-            char_count = formats_check(format[i + 1], args)
-        }
+            formats_check(format[i + 1], args)
+        }                                                                                                                                                                                                            
         else ft_putchar_fd(format[i], 1);
         i++;
     };
@@ -58,5 +57,4 @@ int	ft_printf(char const *format, ...)
     //e ler o proximo prara conferir se é int, char, etc.
 
     va_end(args);
-    
 }
