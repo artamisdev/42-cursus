@@ -32,4 +32,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all libft clean fclean re test
+.PHONY: all libft clean fclean re

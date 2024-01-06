@@ -19,15 +19,6 @@
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"
 
-typedef struct s_flags
-{
-	int		left_align;
-	char	pad_char;
-	int		precision;
-	int		min_width;
-	int		hex_form;
-	int		space_sign;
-	int		signed_form;
-}	t_flags;
-
 int		ft_printf(const char *format, ...);
+
+#endif
