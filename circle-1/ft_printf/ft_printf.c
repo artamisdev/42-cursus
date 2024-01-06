@@ -11,33 +11,32 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-static formats_check(va_list *args, char format)
+static void formats_check(va_list *args, char format)
 {
     if (format == 'c')
-        ft_putchar_fd(va_arg(args,char), 1);
+        ft_putchar_fd(va_arg(*args, int), 1);
     if (format == 's')
-        //ft_putstr_fd()
-    if (format == 'p')
-        //tipo void *
-    if (format == 'd')
-        // decimal
-    if (format == 'i')
-        // tipo inteiro
+        ft_putstr_fd(va_arg(*args, char *), 1);
+    if (format == 'p'){}
+        //void *
+    if (format == 'd' || format == 'i')
+        ft_putnbr_fd(va_arg(*args, int), 1);
     if (format == 'u')
-        //??????
-    if (format == 'x')
+        ft_putnbr_fd(va_arg(*args, unsigned int), 1);
+    if (format == 'x'){}
         // hexadecimal minusculas
-    if (format == 'X')
+    if (format == 'X'){}
         // hexadecimal maiusculas
     if (format == '%')
-        // caractere de porcentagem
+        ft_putchar_fd('%', 1);
 }
 
 int	ft_printf(char const *format, ...)
 {
     va_list args;
-    int     char_count;
+    //int     char_count;
     int     i;
 
     i = 0;
@@ -47,7 +46,7 @@ int	ft_printf(char const *format, ...)
         if (format[i] == '%')
         {
             //chamo a funçao de checar
-            formats_check(format[i + 1], args)
+            formats_check(&args, format[i + 1]);
         }                                                                                                                                                                                                            
         else ft_putchar_fd(format[i], 1);
         i++;
@@ -57,4 +56,11 @@ int	ft_printf(char const *format, ...)
     //e ler o proximo prara conferir se é int, char, etc.
 
     va_end(args);
+    return(0);
+}
+
+int main(void)
+{
+    printf("Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);
+    ft_printf("Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);    
 }
