@@ -46,7 +46,8 @@ int	ft_printf(char const *format, ...)
         if (format[i] == '%')
         {
             //chamo a funçao de checar
-            formats_check(&args, format[i + 1]);
+            i++;
+            formats_check(&args, format[i]);
         }                                                                                                                                                                                                            
         else ft_putchar_fd(format[i], 1);
         i++;
