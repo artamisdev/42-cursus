@@ -6,14 +6,14 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:59:43 by tacampos          #+#    #+#             */
-/*   Updated: 2024/01/06 14:48:30 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:12:43 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-static void formats_check(va_list *args, char format)
+static void	formats_check(va_list *args, char format)
 {
     if (format == 'c')
         ft_putchar_fd(va_arg(*args, int), 1);
@@ -62,6 +62,6 @@ int	ft_printf(char const *format, ...)
 
 int main(void)
 {
-    printf("Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);
+    printf("%x, Hello %c, %s, %d, %i , %u, %%\n", -1783,'T', "amires", 20, 7, 25465);
     ft_printf("Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);    
 }
