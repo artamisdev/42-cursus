@@ -20,5 +20,8 @@
 # define HEX_BASE_UPPER "0123456789ABCDEF"
 
 int		ft_printf(const char *format, ...);
+size_t	ft_ptr_print(va_list args);
+size_t	ft_putnbr_base_fd(unsigned long n, char *base, int fd);
+size_t	ft_putnbr_base_fd_long(long n, char *base, int fd);
 
 #endif

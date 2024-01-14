@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_ptr_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 14:01:26 by tacampos          #+#    #+#             */
-/*   Updated: 2023/11/12 14:45:20 by tacampos         ###   ########.fr       */
+/*   Created: 2024/01/14 18:11:30 by tacampos          #+#    #+#             */
+/*   Updated: 2024/01/14 18:11:34 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_putnbr_fd(int n, int fd)
+#include "ft_printf.h"
+
+size_t	ft_ptr_print(va_list args)
 {
-	long	long_n;
-	int	count;
+    unsigned long  value;
+    int to_return;
 
-	count = 0;
-	long_n = n;
-	if (long_n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		long_n = -long_n;
-	}
-	if (long_n >= 10)
-		ft_putnbr_fd(long_n / 10, fd);
-	count += ft_putchar_fd(long_n % 10 + '0', fd);
+    value = (unsigned long)va_arg(args, void *);
+    to_return = 0;
 
-	return (count);
+    to_return += write(1, "0x", 2);
+    to_return += ft_putnbr_base_fd(value, "0123456789abcdef", 1);
+
+    return (to_return);
+
 }

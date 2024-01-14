@@ -20,7 +20,7 @@ static void	formats_check(va_list *args, char format)
     if (format == 's')
         ft_putstr_fd(va_arg(*args, char *), 1);
     if (format == 'p'){}
-        //void *
+        ft_ptr_print(va_arg(*args, void *));
     if (format == 'd' || format == 'i')
         ft_putnbr_fd(va_arg(*args, int), 1);
     if (format == 'u')
@@ -36,7 +36,6 @@ static void	formats_check(va_list *args, char format)
 int	ft_printf(char const *format, ...)
 {
     va_list args;
-    //int     char_count;
     int     i;
 
     i = 0;
@@ -45,7 +44,6 @@ int	ft_printf(char const *format, ...)
     {
         if (format[i] == '%')
         {
-            //chamo a funçao de checar
             i++;
             formats_check(&args, format[i]);
         }                                                                                                                                                                                                            
@@ -62,6 +60,9 @@ int	ft_printf(char const *format, ...)
 
 int main(void)
 {
-    printf("%x, Hello %c, %s, %d, %i , %u, %%\n", -1783,'T', "amires", 20, 7, 25465);
-    ft_printf("Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);    
+    int teste;
+
+
+    printf("%p, Hello %c, %s, %d, %i , %u, %%\n", &teste, 'T', "amires", 20, 7, 25465);
+    ft_printf("%p, Hello %c, %s, %d, %i , %u, %%\n", &teste, 'T', "amires", 20, 7, 25465);    
 }
