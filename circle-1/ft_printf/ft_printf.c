@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:59:43 by tacampos          #+#    #+#             */
-/*   Updated: 2024/01/13 19:12:43 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:56:17 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static void	formats_check(va_list *args, char format)
     if (format == 's')
         ft_putstr_fd(va_arg(*args, char *), 1);
     if (format == 'p'){}
-        ft_ptr_print(va_arg(*args, void *));
+       // ft_ptr_print(va_arg(*args, void *));
     if (format == 'd' || format == 'i')
         ft_putnbr_fd(va_arg(*args, int), 1);
     if (format == 'u')
         ft_putnbr_fd(va_arg(*args, unsigned int), 1);
     if (format == 'x'){}
-        // hexadecimal minusculas
+        ft_print_x(va_arg(*args, unsigned int))
     if (format == 'X'){}
-        // hexadecimal maiusculas
+        ft_print_x_upper(va_arg(*args, unsigned int))
     if (format == '%')
         ft_putchar_fd('%', 1);
 }
@@ -37,11 +37,11 @@ int	ft_printf(char const *format, ...)
 {
     va_list args;
     int     i;
-
     i = 0;
     va_start(args, format);
     while (format[i])
     {
+
         if (format[i] == '%')
         {
             i++;
@@ -63,6 +63,6 @@ int main(void)
     int teste;
 
 
-    printf("%p, Hello %c, %s, %d, %i , %u, %%\n", &teste, 'T', "amires", 20, 7, 25465);
-    ft_printf("%p, Hello %c, %s, %d, %i , %u, %%\n", &teste, 'T', "amires", 20, 7, 25465);    
+    printf(" Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);
+    ft_printf(" Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);    
 }

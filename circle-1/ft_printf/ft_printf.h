@@ -23,5 +23,7 @@ int		ft_printf(const char *format, ...);
 size_t	ft_ptr_print(va_list args);
 size_t	ft_putnbr_base_fd(unsigned long n, char *base, int fd);
 size_t	ft_putnbr_base_fd_long(long n, char *base, int fd);
+size_t	ft_print_x(va_list args);
+size_t	ft_print_x_upper(va_list args);s
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 18:31:54 by tacampos          #+#    #+#             */
-/*   Updated: 2024/01/13 18:32:23 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:55:19 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ size_t	ft_putnbr_base_fd(unsigned long n, char *base, int fd)
 {
 	size_t	i;
 
+	i = 0;
 	if (n < (unsigned long)ft_strlen(base))
 		i += ft_putchar_fd(base[n], 1);
 	else
@@ -30,6 +31,7 @@ size_t	ft_putnbr_base_fd_long(long n, char *base, int fd)
 {
 	size_t	i;
 
+	i = 0;
 	if (n < 0)
 	{
 		i += ft_putchar_fd('-', fd);
