@@ -25,10 +25,10 @@ static void	formats_check(va_list *args, char format)
         ft_putnbr_fd(va_arg(*args, int), 1);
     if (format == 'u')
         ft_putnbr_fd(va_arg(*args, unsigned int), 1);
-    if (format == 'x'){}
-        ft_print_x(va_arg(*args, unsigned int))
-    if (format == 'X'){}
-        ft_print_x_upper(va_arg(*args, unsigned int))
+    if (format == 'x')
+        ft_print_x(va_arg(*args, unsigned int));
+    if (format == 'X')
+        ft_print_x_upper(va_arg(*args, unsigned int));
     if (format == '%')
         ft_putchar_fd('%', 1);
 }
@@ -49,20 +49,13 @@ int	ft_printf(char const *format, ...)
         }                                                                                                                                                                                                            
         else ft_putchar_fd(format[i], 1);
         i++;
-    };
-    //iterar sobre cada um dos caracteres de 
-    //format e se for igual a % nao imprimir 
-    //e ler o proximo prara conferir se é int, char, etc.
-
+    }
     va_end(args);
     return(0);
 }
 
 int main(void)
 {
-    int teste;
-
-
-    printf(" Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);
-    ft_printf(" Hello %c, %s, %d, %i , %u, %%\n", 'T', "amires", 20, 7, 25465);    
+    printf("%x, %X, Hello %c, %s, %d, %i , %u, %%\n", 1748, 1748, 'T', "amires", 20, 7, 25465);
+    ft_printf("%x, %X, Hello %c, %s, %d, %i , %u, %%\n", 1748, 1748, 'T', "amires", 20, 7, 25465);    
 }

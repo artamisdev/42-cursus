@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_ptr_print.c ft_putnbr_base_fd.c
+SRC = ft_printf.c ft_ptr_print.c ft_putnbr_base_fd.c ft_print_x.c
 
 OBJ = $(SRC:.c=.o)
 LIBFT_OBJ = libft/*.o

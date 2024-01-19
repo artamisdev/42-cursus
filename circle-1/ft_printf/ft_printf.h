@@ -14,6 +14,9 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stddef.h>
 # include "libft/libft.h"
 
 # define HEX_BASE_LOWER "0123456789abcdef"
@@ -23,7 +26,7 @@ int		ft_printf(const char *format, ...);
 size_t	ft_ptr_print(va_list args);
 size_t	ft_putnbr_base_fd(unsigned long n, char *base, int fd);
 size_t	ft_putnbr_base_fd_long(long n, char *base, int fd);
-size_t	ft_print_x(va_list args);
-size_t	ft_print_x_upper(va_list args);s
+size_t	ft_print_x(unsigned int value);
+size_t	ft_print_x_upper(unsigned int value);
 
 #endif

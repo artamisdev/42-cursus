@@ -10,24 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_print_x(va_list args)
+#include "ft_printf.h"
+
+size_t	ft_print_x(unsigned int value)
 {
-    unsigned int    value;
     size_t          to_return;
 
     to_return = 0;
-    value = va_arg(args, unsigned int);
-    to_return += ft_putnbr_fd(value, "0123456789abcdef", 1);
+    to_return += ft_putnbr_base_fd(value, "0123456789abcdef", 1);
     return (to_return);
 }
 
-size_t	ft_print_x_upper(va_list args)
+size_t	ft_print_x_upper(unsigned int value)
 {
-    unsigned int    value;
     size_t          to_return;
     
     to_return = 0;
-    value = va_arg(args, unsigned int);
-    to_return += ft_putnbr_fd(value, "0123456789ABCDEF", 1);
+    to_return += ft_putnbr_base_fd(value, "0123456789ABCDEF", 1);
     return (to_return);
 }
