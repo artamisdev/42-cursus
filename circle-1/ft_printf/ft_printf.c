@@ -6,11 +6,11 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:59:43 by tacampos          #+#    #+#             */
-/*   Updated: 2024/01/20 17:31:24 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:48:56 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-//#include <stdio.h>
+
 
 static int	formats_check(va_list *args, char format)
 {
@@ -23,7 +23,9 @@ static int	formats_check(va_list *args, char format)
 	if (format == 'd' || format == 'i')
 		return (ft_putnbr_fd(va_arg(*args, int), 1));
 	if (format == 'u')
-		return (ft_putnbr_fd(va_arg(*args, unsigned int), 1));
+		return (
+			ft_putnbr_base_fd(va_arg(*args, unsigned int), "0123456789", 1)
+		);
 	if (format == 'x')
 		return (ft_print_x(va_arg(*args, unsigned int)));
 	if (format == 'X')
@@ -60,6 +62,7 @@ int	ft_printf(char const *format, ...)
 }
 
 /*
+#include <stdio.h>
 int	main(void)
 {
    int teste;
