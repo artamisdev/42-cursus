@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-
 static int	formats_check(va_list *args, char format)
 {
 	if (format == 'c')

@@ -14,9 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
 # include "libft/libft.h"
 
 # define HEX_BASE_LOWER "0123456789abcdef"
