@@ -12,53 +12,57 @@
 #include "ft_printf.h"
 //#include <stdio.h>
 
-static void	formats_check(va_list *args, char format)
+static int	formats_check(va_list *args, char format)
 {
 	if (format == 'c')
-		ft_putchar_fd(va_arg(*args, int), 1);
+		return (ft_putchar_fd(va_arg(*args, int), 1));
 	if (format == 's')
-		ft_putstr_fd(va_arg(*args, char *), 1);
+		return (ft_putstr_fd(va_arg(*args, char *), 1));
 	if (format == 'p')
-		ft_ptr_print(va_arg(*args, void *));
+		return (ft_ptr_print(va_arg(*args, void *)));
 	if (format == 'd' || format == 'i')
-		ft_putnbr_fd(va_arg(*args, int), 1);
+		return (ft_putnbr_fd(va_arg(*args, int), 1));
 	if (format == 'u')
-		ft_putnbr_fd(va_arg(*args, unsigned int), 1);
+		return (ft_putnbr_fd(va_arg(*args, unsigned int), 1));
 	if (format == 'x')
-		ft_print_x(va_arg(*args, unsigned int));
+		return (ft_print_x(va_arg(*args, unsigned int)));
 	if (format == 'X')
-		ft_print_x_upper(va_arg(*args, unsigned int));
+		return (ft_print_x_upper(va_arg(*args, unsigned int)));
 	if (format == '%')
-		ft_putchar_fd('%', 1);
+		return (ft_putchar_fd('%', 1));
+	return (0);
 }
 
 int	ft_printf(char const *format, ...)
 {
 	va_list	args;
 	int		i;
+	int		count;
 
 	i = 0;
+	count = 0;
 	va_start(args, format);
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			formats_check(&args, format[i]);
+			count += formats_check(&args, format[i]);
 		}
 		else
 		{
-			ft_putchar_fd(format[i], 1);
+			count += ft_putchar_fd(format[i], 1);
 		}
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (count);
 }
 
-/*int	main(void)
+/*
+int	main(void)
 {
-    int teste;
+   int teste;
     printf("%p\n", &teste);
     printf("%x\n", 1748);
     printf("%X\n", 1748);
@@ -80,4 +84,20 @@ int	ft_printf(char const *format, ...)
     ft_printf("%i\n", 9); 
     ft_printf("%u\n", 25267749);
     ft_printf("%%\n");
-}*/
+
+	int	result;
+	int	result1;
+
+	result = ft_printf("%d", -6000023);
+	printf("\n");
+	result1 = printf("%d", -6000023);
+	printf("\n");
+	
+	printf("%d\n", result);	
+	printf("%d\n", result1);
+
+	printf("%s", NULL);
+	printf("\n");
+	ft_printf("%s", NULL);
+}
+*/
