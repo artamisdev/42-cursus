@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:59:43 by tacampos          #+#    #+#             */
-/*   Updated: 2024/01/21 17:48:56 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:34:21 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -59,47 +59,81 @@ int	ft_printf(char const *format, ...)
 	va_end(args);
 	return (count);
 }
-
-/*
+ 
 #include <stdio.h>
 int	main(void)
 {
-   int teste;
-    printf("%p\n", &teste);
-    printf("%x\n", 1748);
-    printf("%X\n", 1748);
-    printf("%c\n", 't');
-    printf("%s\n", "amires");
-    printf("%d\n", 20);
-    printf("%i\n", 9); 
-    printf("%u\n", 25267749);
-    printf("%%\n");
-
-    printf("\n");
-
-    ft_printf("%p\n", &teste);
-    ft_printf("%x\n", 1748);
-    ft_printf("%X\n", 1748);
-    ft_printf("%c\n", 'T');
-    ft_printf("%s\n", "amires");
-    ft_printf("%d\n", 20);
-    ft_printf("%i\n", 9); 
-    ft_printf("%u\n", 25267749);
-    ft_printf("%%\n");
-
-	int	result;
+    int teste;
+    int	result;
 	int	result1;
+    
+	printf("Char:\n");
+    printf("%c\n", 'T');
+    ft_printf("%c\n", 'T');
+	printf("\n");
 
-	result = ft_printf("%d", -6000023);
+	printf("String:\n");
+    printf("%s\n", "The eye of the tiger");
+    ft_printf("%s\n", "The eye of the tiger");
+	printf("%s\n", NULL);
+	ft_printf("%s\n", NULL);
 	printf("\n");
-	result1 = printf("%d", -6000023);
+    
+	printf("Puntero:\n");
+    printf("%p\n", &teste);
+    ft_printf("%p\n", &teste);
 	printf("\n");
-	
+
+	printf("Digit:\n");
+    printf("%d\n", 2147483647);
+	ft_printf("%d\n", 2147483647);
+	printf("\n");
+	result1 = printf("%d", -2147483647);
+	printf("\n");
+    result = ft_printf("%d", -2147483647);
+	printf("\n");
+	printf("How many chars:\n");
 	printf("%d\n", result);	
 	printf("%d\n", result1);
-
-	printf("%s", NULL);
 	printf("\n");
-	ft_printf("%s", NULL);
+
+	printf("Integer:\n");
+    printf("%i\n", 2147483647);
+	ft_printf("%i\n", 2147483647);
+	printf("\n");
+	result1 = printf("%i", -2147483647);
+	printf("\n");
+    result = ft_printf("%i", -2147483647);
+	printf("\n");
+	printf("How many chars:\n");
+	printf("%i\n", result);	
+	printf("%i\n", result1);
+	printf("\n");
+
+	printf("Unsigned int:\n");
+    printf("%u\n", -1);
+    ft_printf("%u\n", -1);
+    printf("\n");
+
+	printf("Hexadecimal lower:\n");
+    printf("%x\n", 12648430);
+    ft_printf("%x\n", 12648430);
+    printf("\n");
+	printf("%x\n", 51966);
+    ft_printf("%x\n", 51966);
+    printf("\n");
+
+	printf("Hexadecimal Upper:\n");
+    printf("%X\n", 12648430);
+	ft_printf("%X\n", 12648430);
+    printf("\n");
+	printf("%x\n", 51966);
+    ft_printf("%x\n", 51966);
+    printf("\n");
+    
+	printf("Char %%:\n");
+    printf("%%\n");
+    ft_printf("%%\n");
+    printf("\n");
 }
-*/
+
