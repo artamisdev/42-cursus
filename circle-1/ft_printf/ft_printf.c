@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:59:43 by tacampos          #+#    #+#             */
-/*   Updated: 2024/02/03 18:34:21 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:42:59 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -60,6 +60,7 @@ int	ft_printf(char const *format, ...)
 	return (count);
 }
  
+/* 
 #include <stdio.h>
 int	main(void)
 {
@@ -136,4 +137,4 @@ int	main(void)
     ft_printf("%%\n");
     printf("\n");
 }
-
+ */
