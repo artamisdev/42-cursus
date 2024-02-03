@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:59:43 by tacampos          #+#    #+#             */
-/*   Updated: 2024/02/03 19:42:59 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:44:50 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -128,8 +128,8 @@ int	main(void)
     printf("%X\n", 12648430);
 	ft_printf("%X\n", 12648430);
     printf("\n");
-	printf("%x\n", 51966);
-    ft_printf("%x\n", 51966);
+	printf("%X\n", 51966);
+    ft_printf("%X\n", 51966);
     printf("\n");
     
 	printf("Char %%:\n");
