@@ -4,17 +4,16 @@
 
 // que te agarre hasta el salto de linea
 
-// statica = "Hola\nque\ntal\0"
+// statica 
 
-// devolver = "Hola\n"
 
 char *get_next_line(int fd);
 
-    // 1- como é que eu leio?
-        // você tem que leer no seu arquivo y depois vocé tem que guardar isas coisas
+    // no- como é que eu leio?
+        // você tem que leer no seu arquivo y depois vocé tem que guardar coisas
     
     // 2.-guarda o que leu 
-    // char *line_readed =
+
 
 /*int main()
 {
