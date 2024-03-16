@@ -7,12 +7,32 @@
 // statica 
 
 
-char *get_next_line(int fd);
+char *get_next_line(int fd)
+{
+    char    buffer[5];
+    char    line[100];
+    char    *rest;
 
-    // no- como é que eu leio?
-        // você tem que leer no seu arquivo y depois vocé tem que guardar coisas
-    
-    // 2.-guarda o que leu 
+
+    if (fd < 0)
+        return(NULL);
+    while (read(fd, buffer, BUFFER_SIZE) > 0)
+    {
+        rest = ft_strchr(buffer, '\n');
+        if(rest == NULL)
+        {
+            line = ft_strjoin(line, buffer);         
+        }
+        else
+        {
+            // aqui separo o buffer em duas partes, antes e depois do \n.
+
+        }
+
+       
+    }
+
+}
 
 
 /*int main()

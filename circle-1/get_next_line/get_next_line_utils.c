@@ -1,22 +1,26 @@
 #include "get_next_line.h"
 // 1. Crear estas funciones: 
 
-// stchr okayy
+// strchr okayy
 
-int	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	*str;
+	char	chr;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
+	str = (char *)s;
+	chr = c;
+	while (str[i])
 	{
-		if (s[i] == (char)c)
-			return (1);
-		++i;
+		if (str[i] == chr)
+			return (&str[i]);
+		i++;
 	}
-	return (0);
+	if (chr == '\0')
+		return (&str[i]);
+	return (NULL);
 }
 // strdup okay
 
@@ -39,8 +43,27 @@ char	*ft_strdup(const char *s1)
 	}
 	return (cpy);
 }
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	dst_len;
+	size_t	src_len;
 
-// confirmar se esta funcionando bem, tirar strlcat
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dstsize <= dst_len)
+		return (src_len + dstsize);
+	i = 0;
+	while (src[i] && i < dstsize - dst_len - 1)
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
+}
+
+// confirmar se esta funcionando bem
 char	*ft_strjoin(char *s1, char *buff)
 {
 	int		size;
@@ -62,25 +85,6 @@ char	*ft_strjoin(char *s1, char *buff)
 	ft_strlcat(join, s1, size_s1 + 1);
 	ft_strlcat(join, buff, size + 1);
 	return (join);
-}
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-	size_t	dst_len;
-	size_t	src_len;
-
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if (dstsize <= dst_len)
-		return (src_len + dstsize);
-	i = 0;
-	while (src[i] && i < dstsize - dst_len - 1)
-	{
-		dst[dst_len + i] = src[i];
-		i++;
-	}
-	dst[dst_len + i] = '\0';
-	return (dst_len + src_len);
 }
 // tudo certo
 
