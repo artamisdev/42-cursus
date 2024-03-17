@@ -25,31 +25,34 @@ static  char *catch_line(char *str)
     return (line); // retorna a linha pronta
 }
 
-// que te agarre hasta el salto de linea
+// 
 
 char *get_next_line(int fd)
 {
-    char    buffer[5];
+    char    *buffer;
     char    line[100];
-    char    *rest;
+    char    *post_nl;
+    int     len;
 
-
-    if (fd < 0)
+    buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // buffer é um copo onde guardo cada parte lida, aqui aloco espaço de cacordo com o BUFFER_SIZE
+    if (!buffer) // Condicional pra ver se deu certo o malloc
         return(NULL);
-    while (read(fd, buffer, BUFFER_SIZE) > 0)
+    buffer[BUFFER_SIZE] = '\0'; // defino sempre o final de buffer como \0
+    if (fd < 0) // confirmo se o fd é valido, ou seja se o arquivo foi aberto por open
+        return(NULL);
+    while (read(fd, buffer, BUFFER_SIZE) > 0) // leio o arquivo aberto em fd, no tamanho de BUFFER_SIZE, pra dentro de buffer
     {
-        rest = ft_strchr(buffer, '\n');
-        if(rest == NULL)
+        post_nl = ft_strchr(buffer, '\n'); // aqui pego o final, o resto do que foi lido, depois de encontrar o \n
+        if(post_nl == NULL) // se nao encontrei o \n, só sigo o loop jogando buffer em line
         {
             line = ft_strjoin(line, buffer);         
         }
-        else
+        else // encontrou um \n
         {
-            line = ft_strjoin(line, catch_line(buffer));
-            // fazer uma funçao para um update do buffer (pos_nl)
-
-            // aqui separo o buffer em duas partes, antes e depois do \n.
-
+            len = ft_strlen(post_nl + 1);
+            line = ft_strjoin(line, catch_line(buffer)); // junto o final da linha com line
+            ft_memmove(buffer, post_nl + 1, len); // movimento o resto lido, pra dentro buffer, definindo como o inicio da proxima vez que for ler 
+            buffer[len] = '\0'; 
         }
     }
 }
@@ -75,17 +78,3 @@ char *get_next_line(int fd)
     close(fd);
 }*/
 
-/*
-{
-    int fd; // variável chamada "fd" que usaremos para representar o arquivo.
-    char *buf; // variável chamada "buf" que usaremos para armazenar os dados lidos do arquivo.
-    int buf_size = 44; // Aqui estamos definindo o tamanho inicial do buffer como 1.
-    buf = malloc((buf_size + 1) * sizeof(char)); // Aqui alocamos memória para o buffer armazenar buf_size caracteres, mais um para o caractere nulo.
-    buf[buf_size] = '\0'; // definindo o último caractere do buffer como nulo, para garantir que seja uma string válida.
-    fd = open("teste.txt", O_RDONLY); // abrindo o arquivo "teste.txt" no modo de leitura apenas (O_RDONLY) e armazenando o descritor de arquivo na variável "fd".
-    read(fd, buf, buf_size); // lendo dados do arquivo aberto (fd) e armazenando no buffer (buf), lendo até buf_size caracteres.
-    printf("\"%s\"\n", buf); // imprime na tela o conteúdo do buffer, entre aspas duplas.
-    free(buf); // liberando a memória alocada para o buffer, para evitar vazamentos de memória(leaks de memória).
-    close(fd); // fechamos o arquivo que foi aberto, para liberar recursos do sistema operacional.
-}
-*/
