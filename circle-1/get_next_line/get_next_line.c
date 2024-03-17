@@ -1,4 +1,5 @@
 #include "get_next_line.h"
+#include <stdio.h>
 
 static  char *catch_line(char *str)
 {
@@ -17,7 +18,7 @@ static  char *catch_line(char *str)
     while (str[i] != '\n' && str[i] != '\0') // loop para caminhar por str
     {
         line[i] = str[i]; // copiando o valor de str à line
-        i++;
+        ++i;
     }
     if (str[i] == '\n') // condicional para add \n ao fnal de line
         line[i++] = '\n';  // caminhando para a proxima posiçao já atribuindo \n a posiçao atual
@@ -29,15 +30,27 @@ static  char *catch_line(char *str)
 
 char *get_next_line(int fd)
 {
-    char    *buffer;
-    char    line[100];
-    char    *post_nl;
-    int     len;
+    static char    *buffer;
+    char           *line;
+    char           *aux;
+    char           *post_nl;
+    int            len;
 
-    buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // buffer é um copo onde guardo cada parte lida, aqui aloco espaço de cacordo com o BUFFER_SIZE
-    if (!buffer) // Condicional pra ver se deu certo o malloc
+    line = malloc(sizeof(char));
+    if (!line)
         return(NULL);
-    buffer[BUFFER_SIZE] = '\0'; // defino sempre o final de buffer como \0
+    line[0] = '\0';
+    if (buffer == NULL)
+    {
+        buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // buffer é um copo onde guardo cada parte lida, aqui aloco espaço de cacordo com o BUFFER_SIZE
+        if (!buffer) // Condicional pra ver se deu certo o malloc
+            return(NULL);
+        buffer[BUFFER_SIZE] = '\0'; // defino sempre o final de buffer como \0
+    }
+    if(buffer[0])
+    {
+        //???????????? - Proximo passo: resolver o caso do buffer com restinho. 
+    }
     if (fd < 0) // confirmo se o fd é valido, ou seja se o arquivo foi aberto por open
         return(NULL);
     while (read(fd, buffer, BUFFER_SIZE) > 0) // leio o arquivo aberto em fd, no tamanho de BUFFER_SIZE, pra dentro de buffer
@@ -45,16 +58,24 @@ char *get_next_line(int fd)
         post_nl = ft_strchr(buffer, '\n'); // aqui pego o final, o resto do que foi lido, depois de encontrar o \n
         if(post_nl == NULL) // se nao encontrei o \n, só sigo o loop jogando buffer em line
         {
-            line = ft_strjoin(line, buffer);         
+            aux = line;
+            line = ft_strjoin(line, buffer);
+            free(aux);         
         }
         else // encontrou um \n
         {
             len = ft_strlen(post_nl + 1);
+            aux = line;
             line = ft_strjoin(line, catch_line(buffer)); // junto o final da linha com line
+            free(aux);
             ft_memmove(buffer, post_nl + 1, len); // movimento o resto lido, pra dentro buffer, definindo como o inicio da proxima vez que for ler 
-            buffer[len] = '\0'; 
+            buffer[len] = '\0';
+            return(line);
         }
     }
+    free(buffer); 
+    return (line);
+    
 }
 
 /*int main()

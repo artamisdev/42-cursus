@@ -11,7 +11,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, char *buff);
+char	*ft_strjoin(char *stash, char *buff);
 int     ft_strlen(const char *s);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 

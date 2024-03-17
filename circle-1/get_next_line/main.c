@@ -1,4 +1,5 @@
 #include "get_next_line.h"
+#include <stdio.h>
 
 int main()
 {
@@ -6,6 +7,8 @@ int main()
     char *line;
     fd = open("teste.txt", O_RDONLY);
 
+    line = get_next_line(fd);
+    printf("%s\n", line);
     line = get_next_line(fd);
     printf("%s\n", line);
 }

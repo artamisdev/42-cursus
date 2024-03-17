@@ -50,8 +50,34 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-// strdup okay
+char	*ft_strjoin(char *stash, char *buff)
+{
+	int		i;
+	int		j;
+	char	*str;
 
+	if (!stash)
+	{
+		stash = malloc(sizeof(char));
+		stash[0] = '\0';
+	}
+	if (!stash || !buff)
+		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(buff) + 1));
+	if (!str)
+		return (NULL);
+	i = -1;
+	j = 0;
+	while (stash[++i])
+		str[i] = stash[i];
+	while (buff[j])
+		str[i++] = buff[j++];
+	str[i] = '\0';
+	return (str);
+}
+
+// strdup okay
+/* 
 char	*ft_strdup(const char *s1)
 {
     int		i;
@@ -70,8 +96,8 @@ char	*ft_strdup(const char *s1)
 		i++;
 	}
 	return (cpy);
-}
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+} */
+/* size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	dst_len;
@@ -113,7 +139,7 @@ char	*ft_strjoin(char *s1, char *buff)
 	ft_strlcat(join, s1, size_s1 + 1);
 	ft_strlcat(join, buff, size + 1);
 	return (join);
-}
+} */
 // tudo certo
 
 int	ft_strlen(const char *s)
