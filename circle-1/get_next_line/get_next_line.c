@@ -1,11 +1,31 @@
 #include "get_next_line.h"
 
-// para leer
+static  char *catch_line(char *str)
+{
+    int     i; //contador
+    char    *line; // str que vai ser devolvida
+
+    i = 0; // atribuindo valor inicial ao contador
+    if (!str || str[0] == '\0')
+        return (NULL); // condicinal se segurança
+    while (str[i] != '\n' && str[i] != '\0')
+        i++; // loop para saber a quantidade de char que deve ser alocado
+    line = malloc(sizeof(char) * i + 2); // alocando memória e garantindo espaço para \n e \0
+    if (!line)
+        return (NULL); // condicional de segurança 
+    i = 0; // reatribuindo valor, para iniciar do 0 novamente
+    while (str[i] != '\n' && str[i] != '\0') // loop para caminhar por str
+    {
+        line[i] = str[i]; // copiando o valor de str à line
+        i++;
+    }
+    if (str[i] == '\n') // condicional para add \n ao fnal de line
+        line[i++] = '\n';  // caminhando para a proxima posiçao já atribuindo \n a posiçao atual
+    line[i] = '\0'; // add \0 a posiçao final
+    return (line); // retorna a linha pronta
+}
 
 // que te agarre hasta el salto de linea
-
-// statica 
-
 
 char *get_next_line(int fd)
 {
@@ -25,15 +45,14 @@ char *get_next_line(int fd)
         }
         else
         {
+            line = ft_strjoin(line, catch_line(buffer));
+            // fazer uma funçao para um update do buffer (pos_nl)
+
             // aqui separo o buffer em duas partes, antes e depois do \n.
 
         }
-
-       
     }
-
 }
-
 
 /*int main()
 {
