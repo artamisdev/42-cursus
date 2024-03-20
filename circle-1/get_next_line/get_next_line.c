@@ -26,7 +26,22 @@ static  char *catch_line(char *str)
     return (line); // retorna a linha pronta
 }
 
-// 
+char *rest_buffer(char *rest)
+{
+    char    *buffer;
+
+    if (buffer == NULL)
+    {
+        buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // buffer é um copo onde guardo cada parte lida, aqui aloco espaço de acordo com o BUFFER_SIZE
+        if (!buffer) // Condicional pra ver se deu certo o malloc
+            return(NULL);
+        buffer[BUFFER_SIZE] = '\0'; // defino sempre o final de buffer como \0
+    }
+    if(buffer[0])
+    {
+        //???????????? - Proximo passo: resolver o caso do buffer com restinho. 
+    }
+}
 
 char *get_next_line(int fd)
 {
@@ -40,17 +55,7 @@ char *get_next_line(int fd)
     if (!line)
         return(NULL);
     line[0] = '\0';
-    if (buffer == NULL)
-    {
-        buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // buffer é um copo onde guardo cada parte lida, aqui aloco espaço de cacordo com o BUFFER_SIZE
-        if (!buffer) // Condicional pra ver se deu certo o malloc
-            return(NULL);
-        buffer[BUFFER_SIZE] = '\0'; // defino sempre o final de buffer como \0
-    }
-    if(buffer[0])
-    {
-        //???????????? - Proximo passo: resolver o caso do buffer com restinho. 
-    }
+    
     if (fd < 0) // confirmo se o fd é valido, ou seja se o arquivo foi aberto por open
         return(NULL);
     while (read(fd, buffer, BUFFER_SIZE) > 0) // leio o arquivo aberto em fd, no tamanho de BUFFER_SIZE, pra dentro de buffer
@@ -58,18 +63,18 @@ char *get_next_line(int fd)
         post_nl = ft_strchr(buffer, '\n'); // aqui pego o final, o resto do que foi lido, depois de encontrar o \n
         if(post_nl == NULL) // se nao encontrei o \n, só sigo o loop jogando buffer em line
         {
-            aux = line;
-            line = ft_strjoin(line, buffer);
-            free(aux);         
+            aux = line; // Ponteiro pra nao perder o line antigo
+            line = ft_strjoin(line, buffer); // atribuindo o valor do novo line  
+            free(aux); // liberando o ponteiro auxiliar       
         }
         else // encontrou um \n
         {
-            len = ft_strlen(post_nl + 1);
-            aux = line;
+            len = ft_strlen(post_nl + 1); //defininho o tamanho de len
+            aux = line;  // Ponteiro pra nao perder o line antigo
             line = ft_strjoin(line, catch_line(buffer)); // junto o final da linha com line
-            free(aux);
+            free(aux); // liberando o ponteiro auxiliar 
             ft_memmove(buffer, post_nl + 1, len); // movimento o resto lido, pra dentro buffer, definindo como o inicio da proxima vez que for ler 
-            buffer[len] = '\0';
+            buffer[len] = '\0'; // add o \0 ao final do buffer
             return(line);
         }
     }
@@ -77,25 +82,3 @@ char *get_next_line(int fd)
     return (line);
     
 }
-
-/*int main()
-{
-    int fd;
-    char *buf;
-    int buf_size = 5;
-    int i;
-
-    i = 0;
-    buf = malloc((buf_size + 1) * sizeof(char));
-    buf[buf_size] = '\0'; 
-    fd = open("teste.txt", O_RDONLY);
-    while (i < 3)
-    {
-        read(fd, buf, buf_size);
-        printf("\"%s\"\n", buf);
-        i++;
-    }
-    free(buf);
-    close(fd);
-}*/
-
