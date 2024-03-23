@@ -8,9 +8,14 @@ int main()
     fd = open("teste.txt", O_RDONLY);
 
     line = get_next_line(fd);
-    printf("%s\n", line);
+    printf("<%s>", line);
     line = get_next_line(fd);
-    printf("%s\n", line);
+    printf("<%s>", line);
+    line = get_next_line(fd);
+    printf("<%s>", line);
+    line = get_next_line(fd);
+    printf("<%s>", line);
+
 }
 // int main()
 // {
