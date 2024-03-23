@@ -37,8 +37,6 @@ static char    *get_line_from_buffer(char *buffer, char *line)
         aux = line; // Ponteiro pra nao perder o line antigo
         line = ft_strjoin(line, buffer); // atribuindo o valor do novo line  
         free(aux); // liberando o ponteiro auxiliar       
-        if (!line)
-            return(NULL);
     }
     else // encontrou um \n
     {
@@ -46,8 +44,6 @@ static char    *get_line_from_buffer(char *buffer, char *line)
         aux = line;  // Ponteiro pra nao perder o line antigo
         line = ft_strjoin(line, catch_line(buffer)); // junto o final da linha com line
         free(aux); // liberando o ponteiro auxiliar 
-        if (!line)
-            return(NULL);
         ft_memmove(buffer, post_nl + 1, len); // movimento o resto lido, pra dentro buffer, definindo como o inicio da proxima vez que for ler 
         buffer[len] = '\0'; // add o \0 ao final do buffer
     }
@@ -56,63 +52,46 @@ static char    *get_line_from_buffer(char *buffer, char *line)
 }
 static int    initialize(char **buffer, char **line)
 {
-    if (*buffer == NULL)
-    {
-        *buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-        if (!*buffer)
-            return(0);
-    }
     *line = malloc(sizeof(char));
     if (!*line)
-    {
-        free(buffer);
         return(0);
-    }
     *line[0] = '\0';
+    if (*buffer == NULL)
+    {
+        *buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // buffer é um copo onde guardo cada parte lida, aqui aloco espaço de acordo com o BUFFER_SIZE
+        if (!*buffer) // Condicional pra ver se deu certo o malloc
+            return(0);
+    }
     return(1);
 }
 char *get_next_line(int fd)
 {
-    static char *buffer;
-    char *line;
-    int  chars_read;
+    static char    *buffer;
+    char           *line;
+    int            chars_read;
 
-    if (fd < 0 || BUFFER_SIZE < 1)
+    if (fd < 0 || BUFFER_SIZE < 1 || read(fd, buffer, 0) < 0 || !initialize(&buffer, &line)) // confirmo se o fd é valido e se o buffer size é maior que 1
         return(NULL);
-    if (read(fd, buffer, 0) < 0)
-        return(NULL);
-    if (!initialize(&buffer, &line))
-        return(NULL);
-    if (buffer != NULL && buffer[0] != '\0')
-    {
-        line = get_line_from_buffer(buffer, line);
-        if(!line){
-            free(buffer);
-            buffer = NULL;
-            return(NULL);
-        }
-        if (ft_strchr(line, '\n'))
-            return(line);
-    }
-    while((chars_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+    if(buffer[0]) // confere se a primeira letra do buffer é valida, ou seja se tem alguma coisa
+       line = get_line_from_buffer(buffer, line);
+    while ((chars_read = read(fd, buffer, BUFFER_SIZE)) > 0) // leio o arquivo aberto em fd, no tamanho de BUFFER_SIZE, pra dentro de buffer
     {
         buffer[chars_read] = '\0';
         line = get_line_from_buffer(buffer, line);
-        if (!line)
+        if (ft_strchr(line, '\n') || chars_read < BUFFER_SIZE)
         {
-            free(buffer);
-            buffer = NULL;
-            return(NULL);
-        }
-        if (ft_strchr(line, '\n'))
+            if (chars_read < BUFFER_SIZE)
+            {
+                free(buffer);
+                buffer = NULL;
+            }
             return(line);
+        }
     }
     if (line[0] == '\0')
     {
         free(line);
-        return(NULL);
+        line = NULL;
     }
-    free(buffer);
-    buffer = NULL;
     return (line);
 }
