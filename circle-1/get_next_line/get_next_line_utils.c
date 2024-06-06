@@ -3,10 +3,12 @@
 char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	char	*str;
+	char	*str; 
 	char	chr;
 
 	i = 0;
+	if (s == NULL)
+		return (NULL);
 	str = (char *)s;
 	chr = c;
 	while (str[i])
@@ -83,4 +85,24 @@ int	ft_strlen(const char *s)
 		i++;
 	}
 	return (i);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*allocated; 
+	size_t	i;
+	char	*change;
+
+	allocated = malloc(count * size);
+	if (!allocated)
+		return (NULL);
+
+	change = (char*)allocated;
+	i = 0;
+	while (i < count * size)
+	{
+		change[i] = 0;
+		i++;
+	}
+	return ((void *)change);
 }

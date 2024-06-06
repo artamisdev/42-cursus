@@ -1,24 +1,46 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-int main()
+
+int  main (int argc, char **argv)
 {
+    if (argc < 3)
+        return (printf("No hay argumetnos necesarios"), 1);
+
+    int iterations;
     int fd;
     char *line;
-    fd = open("teste.txt", O_RDONLY);
 
-    line = get_next_line(fd);
-    printf("<%s>", line);
-    line = get_next_line(fd);
-    printf("<%s>", line);
-    line = get_next_line(fd);
-    printf("<%s>", line);
-    line = get_next_line(fd);
-    printf("<%s>", line);
-    line = get_next_line(fd);
-    printf("<%s>", line);
+    iterations = atoi(argv[2]);
+    fd = open (argv[1], O_RDONLY);
 
+
+    while(iterations--)
+    {
+        line = get_next_line(fd);
+        printf("%s", line);
+        free(line);
+    }
 }
+
+// int main()
+// {
+//     int fd;
+//     char *line;
+//     fd = open("teste.txt", O_RDONLY);
+
+//     line = get_next_line(fd);
+//     printf("<%s>", line);
+//     line = get_next_line(fd);
+//     printf("<%s>", line);
+//     line = get_next_line(fd);
+//     printf("<%s>", line);
+//     line = get_next_line(fd);
+//     printf("<%s>", line);
+//     line = get_next_line(fd);
+//     printf("<%s>", line);
+
+// }
 // int main()
 // {
 //     int fd;

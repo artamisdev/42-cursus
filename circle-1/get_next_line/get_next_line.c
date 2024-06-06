@@ -10,7 +10,7 @@ static  char *catch_line(char *str)
         return (NULL); // condicinal se segurança
     while (str[i] != '\n' && str[i] != '\0')
         i++; // loop para saber a quantidade de char que deve ser alocado
-    line = malloc(sizeof(char) * i + 2); // alocando memória e garantindo espaço para \n e \0
+    line = ft_calloc(sizeof(char), i + 2); // alocando memória e garantindo espaço para \n e \0
     if (!line)
         return (NULL); // condicional de segurança 
     i = 0; // reatribuindo valor, para iniciar do 0 novamente
@@ -30,7 +30,9 @@ static char    *get_line_from_buffer(char *buffer, char *line)
     char    *aux;
     char    *post_nl;
     int     len;
+    char    *free_catch;
 
+    free_catch = catch_line(buffer);
     post_nl = ft_strchr(buffer, '\n'); // aqui pego o final, o resto do que foi lido, depois de encontrar o \n
     if(post_nl == NULL) // se nao encontrei o \n, só sigo o loop jogando buffer em line
     {
@@ -44,7 +46,8 @@ static char    *get_line_from_buffer(char *buffer, char *line)
     {
         len = ft_strlen(post_nl + 1); //defininho o tamanho de len
         aux = line;  // Ponteiro pra nao perder o line antigo
-        line = ft_strjoin(line, catch_line(buffer)); // junto o final da linha com line
+        line = ft_strjoin(line, free_catch); // junto o final da linha com line
+        free(free_catch);
         free(aux); // liberando o ponteiro auxiliar 
         if (!line)
             return(NULL);
@@ -58,11 +61,11 @@ static int    initialize(char **buffer, char **line)
 {
     if (*buffer == NULL)
     {
-        *buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+        *buffer = ft_calloc(sizeof(char) ,(BUFFER_SIZE + 1));
         if (!*buffer)
             return(0);
     }
-    *line = malloc(sizeof(char));
+    *line = ft_calloc(sizeof(char), 1);
     if (!*line)
     {
         free(buffer);
