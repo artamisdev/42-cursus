@@ -6,11 +6,14 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/10/14 20:34:11 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/10/15 21:10:21 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
+
 int main()
 {
+    ft_putstr_fd("Teste", 1);
     return(0);
 }

@@ -16,17 +16,34 @@ else
 	INCLUDES = -I/opt/X11/include -Imlx
 endif
 
+LIBFT_DIR = ./libft
+LIBFT_LIB = $(LIBFT_DIR)/libft.a
+
 CC = cc -Wall -Werror -Wextra
 RM = rm -rf
 
-all: $(MLX_LIB) $(NAME)
+all: $(MLX_LIB) $(LIBFT_LIB) $(NAME)
 
 $(MLX_LIB):
 	make -C $(MLX_DIR)
 
-clean: 
+$(LIBFT_LIB):
+	make -C $(LIBFT_DIR)
 
-fclean: rm -f $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME)
 
-re: 
+%.o: %.c
+	$(CC) -c $< -o $@
+
+clean:
+	make -C $(MLX_DIR) clean
+	make -C $(LIBFT_DIR) clean
+	$(RM) $(OBJ)
+
+fclean: clean
+	make -C $(LIBFT_DIR) fclean
+	$(RM) $(NAME)
+
+re: fclean all
 
