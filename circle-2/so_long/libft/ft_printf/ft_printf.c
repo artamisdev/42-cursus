@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:59:43 by tacampos          #+#    #+#             */
-/*   Updated: 2024/01/23 16:57:36 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:48:56 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	formats_check(va_list *args, char format)

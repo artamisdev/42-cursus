@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 14:19:23 by tacampos          #+#    #+#             */
-/*   Updated: 2023/11/01 22:17:57 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:00:29 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	countwords(char const *str, char c)

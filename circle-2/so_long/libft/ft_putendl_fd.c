@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 13:35:04 by tacampos          #+#    #+#             */
-/*   Updated: 2023/11/12 13:40:31 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:00:44 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)

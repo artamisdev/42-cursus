@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 23:59:39 by tacampos          #+#    #+#             */
-/*   Updated: 2023/11/12 00:14:18 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:00:33 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
@@ -21,4 +22,5 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
+	return (i);
 }

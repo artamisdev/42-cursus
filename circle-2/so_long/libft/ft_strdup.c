@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid>       +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:49:55 by tacampos          #+#    #+#             */
-/*   Updated: 2023/10/25 17:06:32 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:00:25 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static char	*ft_strcpy(char *dest, char *src)
