@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/10/22 20:51:50 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:41:04 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ int main()
 {   
     int     fd;
     char    *line;
-    fd = open ("maps/map2.ber", O_RDONLY);
+    char    **column;
+    
+    fd = open ("maps/map1.ber", O_RDONLY);
+    if (fd < 0)
+        return(1);
     
     line = get_next_line(fd);
     while (line != NULL)
