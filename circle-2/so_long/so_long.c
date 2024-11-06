@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/06 20:35:06 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/06 20:44:21 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,32 +93,36 @@ int	check_valid_char_map(char *file_name)
 	return (error);
 }
 
-int	check_map_exit(char *file_name)
+int	check_exit_and_player_map(char *file_name)
 {
 	int		fd;
 	size_t	i;
-	int		counter;
+	int		counter_e;
+    int		counter_p;
 	char	*read_line;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (1);
 	read_line = get_next_line(fd);
-	counter = 0;
+	counter_e = 0;
+    counter_p = 0;
 	while (read_line != NULL)
 	{
 		i = 0;
 		while (i < ft_strlen(read_line))
 		{
 			if (read_line[i] == 'E')
-				++counter;
+				++counter_e;
+            if (read_line[i] == 'P')
+				++counter_p;
 			i++;
 		}
 		free(read_line);
 		read_line = get_next_line(fd);
 	}
 	close(fd);
-	return (counter != 1);
+	return (counter_e != 1 || counter_p != 1);
 }
 
 int	main(int argc, char **argv)
@@ -143,8 +147,8 @@ int	main(int argc, char **argv)
 	line_count = count_lines(argv[1]);
 	if (check_width_map(argv[1]) == 1)
 		return (ft_printf("This map is not rectangular!\n"));
-	if (check_map_exit(argv[1]) == 1)
-		return (ft_printf("This map have two exits! It's forbbiden!\n"));
+	if (check_exit_and_player_map(argv[1]) == 1)
+		return (ft_printf("This map have two exits or players! It's forbbiden!\n"));
 	if (check_valid_char_map(argv[1]) == 1)
 		return (ft_printf("This is a invalid map!\n"));
 	map = ft_calloc(line_count, sizeof(char *));
