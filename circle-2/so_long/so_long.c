@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/07 14:51:02 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:18:12 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,32 @@ int	check_collectibles(char *file_name)
 	return (counter < 1);
 }
 
+int check_the_side_walls(char *file_name)
+{
+    int		fd;
+	char	*read_line;
+    int     error;
+
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		return (1);
+    read_line = get_next_line(fd);
+    error = 0;
+    while(read_line != NULL)
+    {
+        if (read_line[0] != '1')
+            ++error;
+        if (read_line[ft_strlen(read_line) - 2] != '1')
+            ++error;
+        free(read_line);
+        read_line = get_next_line(fd);
+    };
+    close(fd);
+    return(error);
+};
+
+//int check_upper_and_lower_walls(char *file_name){};
+
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -195,16 +221,25 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (ft_printf("Could not open file!\n"));
 	line_count = count_lines(argv[1]);
-	if (check_width_map(argv[1]) == 1)
+
+    if (check_the_side_walls(argv[1]) != 0)
+        return(ft_printf("The walls of this map are not valid!\n"));
+        
+    if (check_width_map(argv[1]) == 1)
 		return (ft_printf("This map is not rectangular!\n"));
+        
     if (check_collectibles(argv[1]) == 1)
 		return (ft_printf("This map doesn't have enough collectibles!\n")); 
+        
 	if (check_player_map(argv[1]) == 1)
 		return (ft_printf("This map have two players! It's forbbiden!\n"));
+        
     if (check_exit_map(argv[1]) == 1)
 		return (ft_printf("This map have two exits! It's forbbiden!\n"));
+        
 	if (check_valid_char_map(argv[1]) == 1)
         return (ft_printf("This is a invalid map!\n"));
+        
 	map = ft_calloc(line_count, sizeof(char *));
 	if (!map)
 		return (ft_printf("Failed allocating memory for map!\n"));
