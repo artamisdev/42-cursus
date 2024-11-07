@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/07 17:18:12 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:53:05 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,9 +188,11 @@ int check_the_side_walls(char *file_name)
     error = 0;
     while(read_line != NULL)
     {
+        if (read_line[ft_strlen(read_line) - 1] == '\n')
+            read_line[ft_strlen(read_line) - 1] = '\0';
         if (read_line[0] != '1')
             ++error;
-        if (read_line[ft_strlen(read_line) - 2] != '1')
+        if (read_line[ft_strlen(read_line) - 1] != '1')
             ++error;
         free(read_line);
         read_line = get_next_line(fd);
