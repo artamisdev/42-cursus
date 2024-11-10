@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/07 17:53:05 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/10 16:50:55 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ int	check_collectibles(char *file_name)
 		while (i < ft_strlen(read_line))
 		{
             if (read_line[i] == 'C')
-				++counter;
+				counter++;
 			i++;
 		}
 		free(read_line);
@@ -191,9 +191,9 @@ int check_the_side_walls(char *file_name)
         if (read_line[ft_strlen(read_line) - 1] == '\n')
             read_line[ft_strlen(read_line) - 1] = '\0';
         if (read_line[0] != '1')
-            ++error;
+            error++;
         if (read_line[ft_strlen(read_line) - 1] != '1')
-            ++error;
+            error++;
         free(read_line);
         read_line = get_next_line(fd);
     };
@@ -201,7 +201,85 @@ int check_the_side_walls(char *file_name)
     return(error);
 };
 
-//int check_upper_and_lower_walls(char *file_name){};
+int check_char_one(char *read_line)
+{
+	int	i;
+	int	error;
+
+	error = 0;
+	i = 0;
+	if (read_line[ft_strlen(read_line) - 1] == '\n')
+		read_line[ft_strlen(read_line) - 1] = '\0';
+	while (read_line[i])
+	{
+		if (read_line[i] != '1')
+			error++;
+		i++;
+	}
+	
+	return(error);
+}
+
+int check_lower_wall(char *file_name)
+
+{
+	int		fd;
+	int		error;
+	char	*next_line;
+	char	*read_line;
+
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	error = 0;
+	read_line = get_next_line(fd);
+	while (read_line != NULL)
+	{
+		next_line = get_next_line(fd);
+		if (next_line != NULL)
+		{
+			free(read_line);
+			read_line = next_line;
+			continue ;
+		}
+		error = check_char_one(read_line);
+		free(read_line);
+		read_line = NULL;
+	}
+	close(fd);
+	return (error);	
+};
+
+//int check_upper_wall(char *file_name);
+
+int validate(char **argv)
+{
+	if (check_the_side_walls(argv[1]) != 0)
+        return(ft_printf("The walls of this map are not valid!\n"));
+		
+	if (check_lower_wall(argv[1]) == 1)
+		return(ft_printf("The walls of this map are not valid!\n"));
+		
+	//if (check_upper_wall(argv[1]) == 1)
+	//	return(ft_printf("The walls of this map are not valid!\n"));
+        
+    if (check_width_map(argv[1]) == 1)
+		return (ft_printf("This map is not rectangular!\n"));
+     
+    if (check_collectibles(argv[1]) == 1)
+		return (ft_printf("This map doesn't have enough collectibles!\n")); 
+        
+	if (check_player_map(argv[1]) == 1)
+		return (ft_printf("The amount of players must be 1.\n"));
+        
+    if (check_exit_map(argv[1]) == 1)
+		return (ft_printf("The amount of exits must be 1.\n"));
+        
+	if (check_valid_char_map(argv[1]) == 1)
+        return (ft_printf("This is a invalid map!\n"));
+	return(0);      
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -223,25 +301,10 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (ft_printf("Could not open file!\n"));
 	line_count = count_lines(argv[1]);
-
-    if (check_the_side_walls(argv[1]) != 0)
-        return(ft_printf("The walls of this map are not valid!\n"));
-        
-    if (check_width_map(argv[1]) == 1)
-		return (ft_printf("This map is not rectangular!\n"));
-        
-    if (check_collectibles(argv[1]) == 1)
-		return (ft_printf("This map doesn't have enough collectibles!\n")); 
-        
-	if (check_player_map(argv[1]) == 1)
-		return (ft_printf("This map have two players! It's forbbiden!\n"));
-        
-    if (check_exit_map(argv[1]) == 1)
-		return (ft_printf("This map have two exits! It's forbbiden!\n"));
-        
-	if (check_valid_char_map(argv[1]) == 1)
-        return (ft_printf("This is a invalid map!\n"));
-        
+	
+    if (validate(argv))
+		return(1);
+	
 	map = ft_calloc(line_count, sizeof(char *));
 	if (!map)
 		return (ft_printf("Failed allocating memory for map!\n"));
