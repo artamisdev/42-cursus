@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/10 16:50:55 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:32:55 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,34 +250,57 @@ int check_lower_wall(char *file_name)
 	return (error);	
 };
 
-//int check_upper_wall(char *file_name);
+int check_upper_wall(char *file_name)
+{
+	int		fd;
+	int		error;
+	char	*read_line;
+
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	read_line = get_next_line(fd);
+	error = check_char_one(read_line);
+	free(read_line);
+	close(fd);
+	return(error);
+}
 
 int validate(char **argv)
 {
-	if (check_the_side_walls(argv[1]) != 0)
-        return(ft_printf("The walls of this map are not valid!\n"));
-		
-	if (check_lower_wall(argv[1]) == 1)
-		return(ft_printf("The walls of this map are not valid!\n"));
-		
-	//if (check_upper_wall(argv[1]) == 1)
-	//	return(ft_printf("The walls of this map are not valid!\n"));
-        
-    if (check_width_map(argv[1]) == 1)
+	if (check_width_map(argv[1]) == 1)
 		return (ft_printf("This map is not rectangular!\n"));
-     
-    if (check_collectibles(argv[1]) == 1)
-		return (ft_printf("This map doesn't have enough collectibles!\n")); 
+	//ft_printf("passou check width\n");
+
+	if (check_collectibles(argv[1]) == 1)
+		return (ft_printf("This map doesn't have enough collectibles!\n"));
+	//ft_printf("passou check collectibles\n");
         
 	if (check_player_map(argv[1]) == 1)
 		return (ft_printf("The amount of players must be 1.\n"));
+	//ft_printf("passou check player\n");
         
     if (check_exit_map(argv[1]) == 1)
 		return (ft_printf("The amount of exits must be 1.\n"));
+	//ft_printf("passou check exits\n");
+	
+	if (check_the_side_walls(argv[1]) != 0)
+        return(ft_printf("The walls of this map are not valid!\n"));
+	//ft_printf("passou check side walls\n");
+		
+	if (check_lower_wall(argv[1]) == 1)
+		return(ft_printf("The walls of this map are not valid!\n"));
+	//ft_printf("passou check lower wall\n");
+	
+	if (check_upper_wall(argv[1]) == 1)
+		return(ft_printf("The walls of this map are not valid!\n"));
+	//ft_printf("passou check upper wall\n");
         
 	if (check_valid_char_map(argv[1]) == 1)
         return (ft_printf("This is a invalid map!\n"));
-	return(0);      
+	//ft_printf("passou valid chars\n");
+	
+	return (0);      
 }
 
 
@@ -297,14 +320,17 @@ int	main(int argc, char **argv)
 	check = ft_strncmp(confirm, ".ber", ft_strlen(confirm));
 	if (check != 0)
 		return (ft_printf("Bad file extension (%s)\n", confirm));
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		return (ft_printf("Could not open file!\n"));
-	line_count = count_lines(argv[1]);
 	
     if (validate(argv))
 		return(1);
 	
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (ft_printf("Could not open file!\n"));
+	
+	//ft_printf("passou todos checks\n");
+	
+	line_count = count_lines(argv[1]);
 	map = ft_calloc(line_count, sizeof(char *));
 	if (!map)
 		return (ft_printf("Failed allocating memory for map!\n"));
