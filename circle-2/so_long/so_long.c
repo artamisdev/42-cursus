@@ -6,11 +6,11 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/10 17:32:55 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/13 22:32:41 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "so_long.h"
 
 int	count_lines(char *file_name)
 {
@@ -248,7 +248,7 @@ int check_lower_wall(char *file_name)
 	}
 	close(fd);
 	return (error);	
-};
+}
 
 int check_upper_wall(char *file_name)
 {
@@ -304,6 +304,24 @@ int validate(char **argv)
 }
 
 
+int on_destroy(t_game *game)
+{
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	exit(0);
+	return (0);
+}
+
+int on_keypress(int keycode, t_game *game)
+{
+	(void)game;
+	if (keycode == 65307)
+		return(on_destroy(game));
+	ft_printf("Pressed key: %d\n", keycode);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -313,6 +331,7 @@ int	main(int argc, char **argv)
 	char	**map;
 	char	*confirm;
 	int		check;
+	t_game	game;
 
 	if (argc != 2)
 		return (ft_printf("Bad list of arguments\n"));
@@ -335,6 +354,7 @@ int	main(int argc, char **argv)
 	if (!map)
 		return (ft_printf("Failed allocating memory for map!\n"));
 	i = 0;
+
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -344,5 +364,15 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	close(fd);
+
+	game.mlx_ptr = mlx_init();
+	if (!game.mlx_ptr)
+		return (1);
+	game.win_ptr = mlx_new_window(game.mlx_ptr, 600, 400, "Meu Joguinho");
+	if (!game.win_ptr)
+		return (free(game.mlx_ptr), 1);
+	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &on_keypress, &game);
+	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
+	mlx_loop(game.mlx_ptr);
 	return (0);
 }

@@ -31,10 +31,10 @@ $(LIBFT_LIB):
 	make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME)
+	$(CC) $(MLX_FLAGS) $(OBJ) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME)
 
 %.o: %.c
-	$(CC) -c $< -o $@
+	$(CC) $(INCLUDES) -c $< -o $@
 
 clean:
 	make -C $(MLX_DIR) clean
