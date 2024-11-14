@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/13 22:32:41 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:01:06 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,7 +368,7 @@ int	main(int argc, char **argv)
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
 		return (1);
-	game.win_ptr = mlx_new_window(game.mlx_ptr, 600, 400, "Meu Joguinho");
+	game.win_ptr = mlx_new_window(game.mlx_ptr, 600, 400, "The Dino Dino");
 	if (!game.win_ptr)
 		return (free(game.mlx_ptr), 1);
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &on_keypress, &game);
