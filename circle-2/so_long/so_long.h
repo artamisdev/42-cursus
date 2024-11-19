@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/13 22:35:53 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:43:23 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,28 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
+#define ESC 65307
+#define	PIXEL_SIZE 64
+
+#define WALL_PATH "assets/1-trees.xpm"
+
+typedef struct s_img
+{
+	void *walls;
+	void *collectable;
+	void *player;
+	void *exit;
+} t_img;
+
+
 typedef struct s_game
 {
 	void *mlx_ptr;
 	void *win_ptr;
 } t_game;
+
+
+int load_images(t_game *game, t_img *img);
+int deploy_background(t_game *game, t_img *img, char **map);
 
 #endif

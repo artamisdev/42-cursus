@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/14 13:01:06 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:53:36 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,7 +316,7 @@ int on_destroy(t_game *game)
 int on_keypress(int keycode, t_game *game)
 {
 	(void)game;
-	if (keycode == 65307)
+	if (keycode == ESC)
 		return(on_destroy(game));
 	ft_printf("Pressed key: %d\n", keycode);
 	return (0);
@@ -350,27 +350,41 @@ int	main(int argc, char **argv)
 	//ft_printf("passou todos checks\n");
 	
 	line_count = count_lines(argv[1]);
-	map = ft_calloc(line_count, sizeof(char *));
+	ft_printf("line count; %d\n\n", line_count);
+	map = ft_calloc(line_count + 1, sizeof(char *));
 	if (!map)
 		return (ft_printf("Failed allocating memory for map!\n"));
 	i = 0;
 
-	line = get_next_line(fd);
+	line = "";
 	while (line != NULL)
 	{
-		map[i] = line;
-		ft_printf("%s", line);
 		line = get_next_line(fd);
+		map[i] = line;
+		ft_printf("%s", map[i]);
 		i++;
 	}
 	close(fd);
 
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
-		return (1);
+		return (1); // liberar todo antes de salir <(nwn)>
 	game.win_ptr = mlx_new_window(game.mlx_ptr, 600, 400, "The Dino Dino");
 	if (!game.win_ptr)
-		return (free(game.mlx_ptr), 1);
+		return (free(game.mlx_ptr), 1); //  liberar todo antes de salir <(nwn)> (map)
+
+	
+	// Load images
+	t_img img;
+
+	if (load_images(&game, &img))
+		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
+		
+
+	// Deploy background
+	if (deploy_background(&game, &img, map))
+		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
+
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &on_keypress, &game);
 	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
 	mlx_loop(game.mlx_ptr);

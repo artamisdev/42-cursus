@@ -1,6 +1,7 @@
 NAME = so_long
 
-SRC = so_long.c
+SRC =	so_long.c\
+		deploy_background.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -19,7 +20,7 @@ endif
 LIBFT_DIR = ./libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
-CC = cc -Wall -Werror -Wextra
+CC = cc -Wall -Werror -Wextra -fsanitize=address -g3
 RM = rm -rf
 
 all: $(MLX_LIB) $(LIBFT_LIB) $(NAME)
