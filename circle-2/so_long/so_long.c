@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/19 15:53:36 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:09:56 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,7 +369,8 @@ int	main(int argc, char **argv)
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
 		return (1); // liberar todo antes de salir <(nwn)>
-	game.win_ptr = mlx_new_window(game.mlx_ptr, 600, 400, "The Dino Dino");
+	game.win_ptr = mlx_new_window(game.mlx_ptr, 800, 600, "The Dino Dino"); // fazer a janela se adaptar ao tamanho do mapa
+	
 	if (!game.win_ptr)
 		return (free(game.mlx_ptr), 1); //  liberar todo antes de salir <(nwn)> (map)
 

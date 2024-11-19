@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/19 15:43:23 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:06:00 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define	PIXEL_SIZE 64
 
 #define WALL_PATH "assets/1-trees.xpm"
+#define PLAYER_PATH "assets/p-move.xpm"
 
 typedef struct s_img
 {
