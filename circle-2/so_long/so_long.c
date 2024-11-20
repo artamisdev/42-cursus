@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/20 11:52:38 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:39:28 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,7 +300,7 @@ int validate(char **argv)
         return (ft_printf("This is a invalid map!\n"));
 	//ft_printf("passou valid chars\n");
 	
-	return (0);      
+	return (EXIT_SUCCESS);      
 }
 
 
@@ -310,7 +310,7 @@ int on_destroy(t_game *game)
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	exit(0);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int on_keypress(int keycode, t_game *game)
@@ -318,8 +318,17 @@ int on_keypress(int keycode, t_game *game)
 	(void)game;
 	if (keycode == ESC)
 		return(on_destroy(game));
+	//if (keycode == A)
+	//if (keycode == S)
+	//if (keycode == W)
+	//if (keycode == D)
+	//if (keycode == A_ARROW)
+	//if (keycode == S_ARROW)
+	//if (keycode == W_ARROW)
+	//if (keycode == D_ARROW)
+		
 	ft_printf("Pressed key: %d\n", keycode);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
@@ -341,7 +350,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("Bad file extension (%s)\n", confirm));
 	
     if (validate(argv))
-		return(1);
+		return(EXIT_FAILURE);
 	
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
@@ -356,7 +365,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("Failed allocating memory for map!\n"));
 	i = 0;
 
-	line = "";
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
@@ -388,5 +397,5 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &on_keypress, &game);
 	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
 	mlx_loop(game.mlx_ptr);
-	return (0);
+	return (EXIT_SUCCESS);
 }
