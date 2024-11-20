@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/19 17:06:00 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:58:07 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 #define WALL_PATH "assets/1-trees.xpm"
 #define PLAYER_PATH "assets/p-move.xpm"
+#define COLLECTABLE_PATH "assets/strawberry.xpm"
+#define EXIT_PATH "assets/exit.xpm"
 
 typedef struct s_img
 {

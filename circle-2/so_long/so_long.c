@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/19 17:09:56 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:52:38 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,13 +368,12 @@ int	main(int argc, char **argv)
 
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
-		return (1); // liberar todo antes de salir <(nwn)>
-	game.win_ptr = mlx_new_window(game.mlx_ptr, 800, 600, "The Dino Dino"); // fazer a janela se adaptar ao tamanho do mapa
+		return (ft_printf("Failed initializing MLX!\n")); // liberar todo antes de salir <(nwn)>
+	game.win_ptr = mlx_new_window(game.mlx_ptr, 890, 380, "The Dino Dino"); // fazer a janela se adaptar ao tamanho do mapa
 	
 	if (!game.win_ptr)
-		return (free(game.mlx_ptr), 1); //  liberar todo antes de salir <(nwn)> (map)
+		return (free(game.mlx_ptr), ft_printf("Failed opening window!\n")); //  liberar todo antes de salir <(nwn)> (map)
 
-	
 	// Load images
 	t_img img;
 
