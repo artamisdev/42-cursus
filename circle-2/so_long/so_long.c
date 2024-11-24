@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/20 14:39:28 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:08:09 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,12 +303,25 @@ int validate(char **argv)
 	return (EXIT_SUCCESS);      
 }
 
+void free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while(map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
 
 int on_destroy(t_game *game)
 {
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
+	free_map(game->map);
 	exit(0);
 	return (EXIT_SUCCESS);
 }
@@ -337,7 +350,6 @@ int	main(int argc, char **argv)
 	int		i;
 	size_t	line_count;
 	char	*line;
-	char	**map;
 	char	*confirm;
 	int		check;
 	t_game	game;
@@ -360,17 +372,19 @@ int	main(int argc, char **argv)
 	
 	line_count = count_lines(argv[1]);
 	ft_printf("line count; %d\n\n", line_count);
-	map = ft_calloc(line_count + 1, sizeof(char *));
-	if (!map)
+	game.map = ft_calloc(line_count + 1, sizeof(char *));
+	if (!game.map)
 		return (ft_printf("Failed allocating memory for map!\n"));
 	i = 0;
 
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
+		if (ft_strchr(line, '\n'))
+			line[ft_strlen(line) - 1] = '\0';
+		game.map[i] = line;
+		//ft_printf("%s", game.map[i]);
 		line = get_next_line(fd);
-		map[i] = line;
-		ft_printf("%s", map[i]);
 		i++;
 	}
 	close(fd);
@@ -378,7 +392,7 @@ int	main(int argc, char **argv)
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
 		return (ft_printf("Failed initializing MLX!\n")); // liberar todo antes de salir <(nwn)>
-	game.win_ptr = mlx_new_window(game.mlx_ptr, 890, 380, "The Dino Dino"); // fazer a janela se adaptar ao tamanho do mapa
+	game.win_ptr = mlx_new_window(game.mlx_ptr, ft_strlen(game.map[0]) * PIXEL_SIZE, line_count * PIXEL_SIZE, "The Dino Dino"); // fazer a janela se adaptar ao tamanho do mapa
 	
 	if (!game.win_ptr)
 		return (free(game.mlx_ptr), ft_printf("Failed opening window!\n")); //  liberar todo antes de salir <(nwn)> (map)
@@ -391,11 +405,12 @@ int	main(int argc, char **argv)
 		
 
 	// Deploy background
-	if (deploy_background(&game, &img, map))
+	if (deploy_background(&game, &img, game.map))
 		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
 
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &on_keypress, &game);
 	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
 	mlx_loop(game.mlx_ptr);
+	
 	return (EXIT_SUCCESS);
 }
