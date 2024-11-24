@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/24 17:08:09 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:08:35 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,23 +326,28 @@ int on_destroy(t_game *game)
 	return (EXIT_SUCCESS);
 }
 
+void	move(t_game *game, int keycode)
+{	
+	if (keycode == A || keycode == A_ARROW)
+		game->x--;
+	if (keycode == D || keycode == D_ARROW)
+		game->x++;
+	if (keycode == W || keycode == W_ARROW)
+		game->y--;
+	if (keycode == S || keycode == S_ARROW)
+		game->y++;
+}
 int on_keypress(int keycode, t_game *game)
 {
 	(void)game;
 	if (keycode == ESC)
 		return(on_destroy(game));
-	//if (keycode == A)
-	//if (keycode == S)
-	//if (keycode == W)
-	//if (keycode == D)
-	//if (keycode == A_ARROW)
-	//if (keycode == S_ARROW)
-	//if (keycode == W_ARROW)
-	//if (keycode == D_ARROW)
-		
+	move(game, keycode);	
+	ft_printf("X = %d\n Y = %d\n", game->x, game->y);
 	ft_printf("Pressed key: %d\n", keycode);
 	return (EXIT_SUCCESS);
 }
+
 
 int	main(int argc, char **argv)
 {
@@ -402,7 +407,6 @@ int	main(int argc, char **argv)
 
 	if (load_images(&game, &img))
 		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
-		
 
 	// Deploy background
 	if (deploy_background(&game, &img, game.map))

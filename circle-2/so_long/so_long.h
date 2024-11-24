@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/24 17:15:30 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:45:47 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	**map;
+	int		x;
+	int		y;
 } t_game;
 
 
