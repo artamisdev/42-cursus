@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/24 17:45:47 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:58:00 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ typedef struct s_game
 	char	**map;
 	int		x;
 	int		y;
+	t_img	img;
 } t_game;
 
-
-int load_images(t_game *game, t_img *img);
-int deploy_background(t_game *game, t_img *img, char **map);
+int load_images(t_game *game);
+int deploy_background(t_game *game);
+void deploy_p(t_game *game);
+void p_reposition(t_game *game);
 
 #endif

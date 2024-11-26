@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/24 18:08:35 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:57:35 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -342,7 +342,8 @@ int on_keypress(int keycode, t_game *game)
 	(void)game;
 	if (keycode == ESC)
 		return(on_destroy(game));
-	move(game, keycode);	
+	move(game, keycode);
+	deploy_p(game);
 	ft_printf("X = %d\n Y = %d\n", game->x, game->y);
 	ft_printf("Pressed key: %d\n", keycode);
 	return (EXIT_SUCCESS);
@@ -402,15 +403,13 @@ int	main(int argc, char **argv)
 	if (!game.win_ptr)
 		return (free(game.mlx_ptr), ft_printf("Failed opening window!\n")); //  liberar todo antes de salir <(nwn)> (map)
 
-	// Load images
-	t_img img;
-
-	if (load_images(&game, &img))
+	if (load_images(&game))
 		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
 
 	// Deploy background
-	if (deploy_background(&game, &img, game.map))
-		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
+	deploy_background(&game);
+	p_reposition(&game);	 
+	//liberar todo antes de salir <(nwn)> (map)
 
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &on_keypress, &game);
 	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &game);
