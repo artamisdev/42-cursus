@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/26 16:58:00 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:33:51 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 # define S_ARROW 65364
 # define D_ARROW 65363
 # define PIXEL_SIZE 64
+
+# define WALL '1'
+# define COLLECTIBLE 'C'
+# define EXIT 'E'
+# define PLAYER 'P'
+# define GROUND '0'
 
 # define WALL_PATH "assets/1-trees.xpm"
 # define PLAYER_PATH "assets/p-move.xpm"

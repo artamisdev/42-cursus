@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/26 16:57:35 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:34:42 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,36 +270,20 @@ int validate(char **argv)
 {
 	if (check_width_map(argv[1]) == 1)
 		return (ft_printf("This map is not rectangular!\n"));
-	//ft_printf("passou check width\n");
-
 	if (check_collectibles(argv[1]) == 1)
 		return (ft_printf("This map doesn't have enough collectibles!\n"));
-	//ft_printf("passou check collectibles\n");
-        
 	if (check_player_map(argv[1]) == 1)
-		return (ft_printf("The amount of players must be 1.\n"));
-	//ft_printf("passou check player\n");
-        
+		return (ft_printf("The amount of players must be 1.\n"));   
     if (check_exit_map(argv[1]) == 1)
 		return (ft_printf("The amount of exits must be 1.\n"));
-	//ft_printf("passou check exits\n");
-	
 	if (check_the_side_walls(argv[1]) != 0)
         return(ft_printf("The walls of this map are not valid!\n"));
-	//ft_printf("passou check side walls\n");
-		
 	if (check_lower_wall(argv[1]) == 1)
 		return(ft_printf("The walls of this map are not valid!\n"));
-	//ft_printf("passou check lower wall\n");
-	
 	if (check_upper_wall(argv[1]) == 1)
 		return(ft_printf("The walls of this map are not valid!\n"));
-	//ft_printf("passou check upper wall\n");
-        
 	if (check_valid_char_map(argv[1]) == 1)
         return (ft_printf("This is a invalid map!\n"));
-	//ft_printf("passou valid chars\n");
-	
 	return (EXIT_SUCCESS);      
 }
 
@@ -329,13 +313,25 @@ int on_destroy(t_game *game)
 void	move(t_game *game, int keycode)
 {	
 	if (keycode == A || keycode == A_ARROW)
-		game->x--;
+	{
+		if (game->map[game->y][game->x - 1] != WALL)
+			game->x--;
+	}
 	if (keycode == D || keycode == D_ARROW)
-		game->x++;
+	{
+		if (game->map[game->y][game->x + 1] != WALL)
+			game->x++;
+	}
 	if (keycode == W || keycode == W_ARROW)
-		game->y--;
+	{
+		if (game->map[game->y - 1][game->x] != WALL)
+			game->y--;
+	}
 	if (keycode == S || keycode == S_ARROW)
-		game->y++;
+	{
+		if (game->map[game->y + 1][game->x] != WALL)
+			game->y++;
+	}		
 }
 int on_keypress(int keycode, t_game *game)
 {
