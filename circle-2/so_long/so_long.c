@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/28 20:34:42 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:08:00 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,6 +333,7 @@ void	move(t_game *game, int keycode)
 			game->y++;
 	}		
 }
+
 int on_keypress(int keycode, t_game *game)
 {
 	(void)game;
@@ -340,6 +341,12 @@ int on_keypress(int keycode, t_game *game)
 		return(on_destroy(game));
 	move(game, keycode);
 	deploy_p(game);
+	if (game->map[game->y][game->x] == COLLECTIBLE)
+	{
+		game->map[game->y][game->x] = GROUND;
+		game->count_collectible++;
+		ft_printf("contando coletaveis: %d", game->count_collectible);
+	}
 	ft_printf("X = %d\n Y = %d\n", game->x, game->y);
 	ft_printf("Pressed key: %d\n", keycode);
 	return (EXIT_SUCCESS);

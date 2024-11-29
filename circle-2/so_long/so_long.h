@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/28 20:33:51 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:00:28 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_game
 	char	**map;
 	int		x;
 	int		y;
+	int		count_collectible;
 	t_img	img;
 } t_game;
 
