@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/29 17:08:00 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:33:04 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,31 @@ int	check_collectibles(char *file_name)
 	close(fd);
 	return (counter < 1);
 }
+
+int count_collectibles(t_game *game)
+{
+	int i;
+    int j;
+	int	counter_c;
+
+    i = 0;
+	counter_c = 0;
+    while (game->map && game->map[i])
+    {
+        j = 0;
+        while (game->map[i][j])
+        {
+			if (game->map[i][j] == COLLECTIBLE)
+				counter_c++;
+            j++;
+        }
+        i++;
+    }
+	game->count_collectible = counter_c;
+	ft_printf("counter_c: %d\n", counter_c);
+	return(counter_c);
+}
+
 
 int check_the_side_walls(char *file_name)
 {
@@ -344,8 +369,13 @@ int on_keypress(int keycode, t_game *game)
 	if (game->map[game->y][game->x] == COLLECTIBLE)
 	{
 		game->map[game->y][game->x] = GROUND;
-		game->count_collectible++;
-		ft_printf("contando coletaveis: %d", game->count_collectible);
+		game->count_collectible--;
+		ft_printf("Contando Coletaveis: %d\n", game->count_collectible);
+	}
+	if (game->map[game->y][game->x] == EXIT)
+	{
+		if (game->count_collectible == 0)
+			return(on_destroy(game));
 	}
 	ft_printf("X = %d\n Y = %d\n", game->x, game->y);
 	ft_printf("Pressed key: %d\n", keycode);
@@ -409,6 +439,7 @@ int	main(int argc, char **argv)
 	if (load_images(&game))
 		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
 
+	count_collectibles(&game);
 	// Deploy background
 	deploy_background(&game);
 	p_reposition(&game);	 
