@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/29 17:00:28 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:30:13 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_game
 	int		x;
 	int		y;
 	int		count_collectible;
+	int		count_steps;
 	t_img	img;
 } t_game;
 
@@ -64,5 +65,14 @@ int load_images(t_game *game);
 int deploy_background(t_game *game);
 void deploy_p(t_game *game);
 void p_reposition(t_game *game);
+int	check_width_map(char *file_name);
+int	check_valid_char_map(char *file_name);
+int	check_exit_map(char *file_name);
+int	check_player_map(char *file_name);
+int	check_collectibles(char *file_name);
+int check_the_side_walls(char *file_name);
+int check_char_one(char *read_line);
+int check_lower_wall(char *file_name);
+int check_upper_wall(char *file_name);
 
 #endif

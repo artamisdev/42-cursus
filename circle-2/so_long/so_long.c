@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/12/03 21:33:04 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:59:55 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,149 +30,7 @@ int	count_lines(char *file_name)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	// ft_printf("\n%d",line_count);
 	return (line_count);
-}
-
-int	check_width_map(char *file_name)
-{
-	int		fd;
-	char	*read_line;
-	size_t	width;
-	size_t	len;
-	int		error;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	error = 0;
-	read_line = get_next_line(fd);
-	width = ft_strlen(read_line);
-	if (ft_strchr(read_line, '\n') != NULL)
-		width--;
-	while (read_line != NULL)
-	{
-		len = ft_strlen(read_line);
-		if (ft_strchr(read_line, '\n') != NULL)
-			len--;
-		if (len != width)
-			error = 1;
-		free(read_line);
-		read_line = get_next_line(fd);
-	}
-	close(fd);
-	return (error);
-}
-
-int	check_valid_char_map(char *file_name)
-{
-	int		fd;
-	int		error;
-	size_t	j;
-	char	*str;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	error = 0;
-	str = get_next_line(fd);
-	while (str != NULL)
-	{
-		j = 0;
-		while (j < ft_strlen(str))
-		{
-			if (str[j] != '1' && str[j] != '0' && str[j] != 'E' && str[j] != 'C'
-				&& str[j] != 'P' && str[j] != '\n')
-				error = 1;
-			j++;
-		}
-		free(str);
-		str = get_next_line(fd);
-	}
-	close(fd);
-	return (error);
-}
-
-int	check_exit_map(char *file_name)
-{
-	int		fd;
-	size_t	i;
-	int		counter_e;
-	char	*read_line;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	read_line = get_next_line(fd);
-	counter_e = 0;
-	while (read_line != NULL)
-	{
-		i = 0;
-		while (i < ft_strlen(read_line))
-		{
-			if (read_line[i] == 'E')
-				++counter_e;
-			i++;
-		}
-		free(read_line);
-		read_line = get_next_line(fd);
-	}
-	close(fd);
-	return (counter_e != 1 );
-}
-int	check_player_map(char *file_name)
-{
-	int		fd;
-	size_t	i;
-    int		counter_p;
-	char	*read_line;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	read_line = get_next_line(fd);
-    counter_p = 0;
-	while (read_line != NULL)
-	{
-		i = 0;
-		while (i < ft_strlen(read_line))
-		{
-            if (read_line[i] == 'P')
-				++counter_p;
-			i++;
-		}
-		free(read_line);
-		read_line = get_next_line(fd);
-	}
-	close(fd);
-	return (counter_p != 1);
-}
-int	check_collectibles(char *file_name)
-{
-	int		fd;
-	size_t	i;
-    int		counter;
-	char	*read_line;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	read_line = get_next_line(fd);
-    counter = 0;
-	while (read_line != NULL)
-	{
-		i = 0;
-		while (i < ft_strlen(read_line))
-		{
-            if (read_line[i] == 'C')
-				counter++;
-			i++;
-		}
-		free(read_line);
-		read_line = get_next_line(fd);
-	}
-	close(fd);
-	return (counter < 1);
 }
 
 int count_collectibles(t_game *game)
@@ -195,102 +53,9 @@ int count_collectibles(t_game *game)
         i++;
     }
 	game->count_collectible = counter_c;
-	ft_printf("counter_c: %d\n", counter_c);
+	// ft_printf("counter_c: %d\n", counter_c);
 	return(counter_c);
 }
-
-
-int check_the_side_walls(char *file_name)
-{
-    int		fd;
-	char	*read_line;
-    int     error;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-    read_line = get_next_line(fd);
-    error = 0;
-    while(read_line != NULL)
-    {
-        if (read_line[ft_strlen(read_line) - 1] == '\n')
-            read_line[ft_strlen(read_line) - 1] = '\0';
-        if (read_line[0] != '1')
-            error++;
-        if (read_line[ft_strlen(read_line) - 1] != '1')
-            error++;
-        free(read_line);
-        read_line = get_next_line(fd);
-    };
-    close(fd);
-    return(error);
-};
-
-int check_char_one(char *read_line)
-{
-	int	i;
-	int	error;
-
-	error = 0;
-	i = 0;
-	if (read_line[ft_strlen(read_line) - 1] == '\n')
-		read_line[ft_strlen(read_line) - 1] = '\0';
-	while (read_line[i])
-	{
-		if (read_line[i] != '1')
-			error++;
-		i++;
-	}
-	
-	return(error);
-}
-
-int check_lower_wall(char *file_name)
-
-{
-	int		fd;
-	int		error;
-	char	*next_line;
-	char	*read_line;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	error = 0;
-	read_line = get_next_line(fd);
-	while (read_line != NULL)
-	{
-		next_line = get_next_line(fd);
-		if (next_line != NULL)
-		{
-			free(read_line);
-			read_line = next_line;
-			continue ;
-		}
-		error = check_char_one(read_line);
-		free(read_line);
-		read_line = NULL;
-	}
-	close(fd);
-	return (error);	
-}
-
-int check_upper_wall(char *file_name)
-{
-	int		fd;
-	int		error;
-	char	*read_line;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	read_line = get_next_line(fd);
-	error = check_char_one(read_line);
-	free(read_line);
-	close(fd);
-	return(error);
-}
-
 int validate(char **argv)
 {
 	if (check_width_map(argv[1]) == 1)
@@ -334,7 +99,6 @@ int on_destroy(t_game *game)
 	exit(0);
 	return (EXIT_SUCCESS);
 }
-
 void	move(t_game *game, int keycode)
 {	
 	if (keycode == A || keycode == A_ARROW)
@@ -358,6 +122,29 @@ void	move(t_game *game, int keycode)
 			game->y++;
 	}		
 }
+void	counter_steps(t_game *game, int keycode)
+{	
+	if (keycode == A || keycode == A_ARROW)
+	{
+		if (game->map[game->y][game->x - 1] != WALL)
+			++game->count_steps;
+	}
+	if (keycode == D || keycode == D_ARROW)
+	{
+		if (game->map[game->y][game->x + 1] != WALL)
+			++game->count_steps;
+	}
+	if (keycode == W || keycode == W_ARROW)
+	{
+		if (game->map[game->y - 1][game->x] != WALL)
+			++game->count_steps;
+	}
+	if (keycode == S || keycode == S_ARROW)
+	{
+		if (game->map[game->y + 1][game->x] != WALL)
+			++game->count_steps;
+	}		
+}
 
 int on_keypress(int keycode, t_game *game)
 {
@@ -366,6 +153,7 @@ int on_keypress(int keycode, t_game *game)
 		return(on_destroy(game));
 	move(game, keycode);
 	deploy_p(game);
+	counter_steps(game,keycode);
 	if (game->map[game->y][game->x] == COLLECTIBLE)
 	{
 		game->map[game->y][game->x] = GROUND;
@@ -379,6 +167,7 @@ int on_keypress(int keycode, t_game *game)
 	}
 	ft_printf("X = %d\n Y = %d\n", game->x, game->y);
 	ft_printf("Pressed key: %d\n", keycode);
+	ft_printf("Counter_steps: %d\n", game->count_steps);
 	return (EXIT_SUCCESS);
 }
 
@@ -440,6 +229,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE); //  liberar todo antes de salir <(nwn)> (map)
 
 	count_collectibles(&game);
+	game.count_steps = 0; 
 	// Deploy background
 	deploy_background(&game);
 	p_reposition(&game);	 
