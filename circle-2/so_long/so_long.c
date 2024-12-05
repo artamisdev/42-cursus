@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/12/04 16:54:17 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:03:49 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,22 +127,22 @@ void	counter_steps(t_game *game, int keycode)
 	if (keycode == A || keycode == A_ARROW)
 	{
 		if (game->map[game->y][game->x - 1] != WALL)
-			++game->count_steps;
+			game->count_steps++;
 	}
 	if (keycode == D || keycode == D_ARROW)
 	{
 		if (game->map[game->y][game->x + 1] != WALL)
-			++game->count_steps;
+			game->count_steps++;
 	}
 	if (keycode == W || keycode == W_ARROW)
 	{
 		if (game->map[game->y - 1][game->x] != WALL)
-			++game->count_steps;
+			game->count_steps++;
 	}
 	if (keycode == S || keycode == S_ARROW)
 	{
 		if (game->map[game->y + 1][game->x] != WALL)
-			++game->count_steps;
+			game->count_steps++;
 	}		
 }
 
@@ -151,23 +151,24 @@ int on_keypress(int keycode, t_game *game)
 	(void)game;
 	if (keycode == ESC)
 		return(on_destroy(game));
+	counter_steps(game,keycode);
 	move(game, keycode);
 	deploy_p(game);
-	counter_steps(game,keycode);
+	
 	if (game->map[game->y][game->x] == COLLECTIBLE)
 	{
 		game->map[game->y][game->x] = GROUND;
 		game->count_collectible--;
-		ft_printf("Contando Coletaveis: %d\n", game->count_collectible);
+		ft_printf("Collectibles Left: %d\n", game->count_collectible);
 	}
 	if (game->map[game->y][game->x] == EXIT)
 	{
 		if (game->count_collectible == 0)
 			return(on_destroy(game));
 	}
-	ft_printf("X = %d\n Y = %d\n", game->x, game->y);
-	ft_printf("Pressed key: %d\n", keycode);
-	ft_printf("Counter_steps: %d\n", game->count_steps);
+	// ft_printf("X = %d\n Y = %d\n", game->x, game->y);
+	// ft_printf("Pressed key: %d\n", keycode);
+	ft_printf("Steps: %d\n", game->count_steps);
 	return (EXIT_SUCCESS);
 }
 
