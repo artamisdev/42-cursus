@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deploy_background.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tacampos <tacampos@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:10:28 by tacampos          #+#    #+#             */
-/*   Updated: 2024/11/26 16:57:55 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:50:07 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,14 @@ int load_images(t_game *game)
     game->img.collectable = mlx_xpm_file_to_image(game->mlx_ptr, COLLECTABLE_PATH, &x, &y);
     game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr, EXIT_PATH, &x, &y);
     // etc ...
-    // if (!img.walls)
+    if (!game->img.player)
+        return ft_printf("Cannot Cannot access images!\n");
+    if (!game->img.collectable)
+        return ft_printf("Cannot Cannot access images!\n");
+    if (!game->img.exit)
+        return ft_printf("Cannot Cannot access images!\n");
+    if (!game->img.walls)
+        return ft_printf("Cannot Cannot access images!\n");
         // LIBERAR Y SALIR
     return (EXIT_SUCCESS);
 }   

@@ -3,7 +3,8 @@ NAME = so_long
 SRC =	so_long.c\
 		deploy_background.c\
 		check_pack_1.c\
-		check_pack_2.c
+		check_pack_2.c\
+		counters.c
 
 OBJ = $(SRC:.c=.o)
 

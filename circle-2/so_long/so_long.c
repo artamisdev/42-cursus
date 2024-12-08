@@ -6,56 +6,12 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/12/05 15:03:49 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:45:01 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_lines(char *file_name)
-{
-	int		fd;
-	int		line_count;
-	char	*line;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	line_count = 0;
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		line_count++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (line_count);
-}
-
-int count_collectibles(t_game *game)
-{
-	int i;
-    int j;
-	int	counter_c;
-
-    i = 0;
-	counter_c = 0;
-    while (game->map && game->map[i])
-    {
-        j = 0;
-        while (game->map[i][j])
-        {
-			if (game->map[i][j] == COLLECTIBLE)
-				counter_c++;
-            j++;
-        }
-        i++;
-    }
-	game->count_collectible = counter_c;
-	// ft_printf("counter_c: %d\n", counter_c);
-	return(counter_c);
-}
 int validate(char **argv)
 {
 	if (check_width_map(argv[1]) == 1)
@@ -122,29 +78,6 @@ void	move(t_game *game, int keycode)
 			game->y++;
 	}		
 }
-void	counter_steps(t_game *game, int keycode)
-{	
-	if (keycode == A || keycode == A_ARROW)
-	{
-		if (game->map[game->y][game->x - 1] != WALL)
-			game->count_steps++;
-	}
-	if (keycode == D || keycode == D_ARROW)
-	{
-		if (game->map[game->y][game->x + 1] != WALL)
-			game->count_steps++;
-	}
-	if (keycode == W || keycode == W_ARROW)
-	{
-		if (game->map[game->y - 1][game->x] != WALL)
-			game->count_steps++;
-	}
-	if (keycode == S || keycode == S_ARROW)
-	{
-		if (game->map[game->y + 1][game->x] != WALL)
-			game->count_steps++;
-	}		
-}
 
 int on_keypress(int keycode, t_game *game)
 {
@@ -171,7 +104,6 @@ int on_keypress(int keycode, t_game *game)
 	ft_printf("Steps: %d\n", game->count_steps);
 	return (EXIT_SUCCESS);
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -200,7 +132,7 @@ int	main(int argc, char **argv)
 	//ft_printf("passou todos checks\n");
 	
 	line_count = count_lines(argv[1]);
-	ft_printf("line count; %d\n\n", line_count);
+	//ft_printf("line count; %d\n\n", line_count);
 	game.map = ft_calloc(line_count + 1, sizeof(char *));
 	if (!game.map)
 		return (ft_printf("Failed allocating memory for map!\n"));

@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:28:33 by tacampos          #+#    #+#             */
-/*   Updated: 2024/12/04 15:30:13 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:42:37 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ int check_the_side_walls(char *file_name);
 int check_char_one(char *read_line);
 int check_lower_wall(char *file_name);
 int check_upper_wall(char *file_name);
+int	count_lines(char *file_name);
+int count_collectibles(t_game *game);
+void counter_steps(t_game *game, int keycode);
 
 #endif
