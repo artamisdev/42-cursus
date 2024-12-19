@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:25:50 by tacampos          #+#    #+#             */
-/*   Updated: 2024/12/08 18:45:01 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/19 21:40:31 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ int on_keypress(int keycode, t_game *game)
 		if (game->count_collectible == 0)
 			return(on_destroy(game));
 	}
-	// ft_printf("X = %d\n Y = %d\n", game->x, game->y);
-	// ft_printf("Pressed key: %d\n", keycode);
+
 	ft_printf("Steps: %d\n", game->count_steps);
 	return (EXIT_SUCCESS);
 }
@@ -129,10 +128,7 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (ft_printf("Could not open file!\n"));
 	
-	//ft_printf("passou todos checks\n");
-	
 	line_count = count_lines(argv[1]);
-	//ft_printf("line count; %d\n\n", line_count);
 	game.map = ft_calloc(line_count + 1, sizeof(char *));
 	if (!game.map)
 		return (ft_printf("Failed allocating memory for map!\n"));
@@ -144,7 +140,6 @@ int	main(int argc, char **argv)
 		if (ft_strchr(line, '\n'))
 			line[ft_strlen(line) - 1] = '\0';
 		game.map[i] = line;
-		//ft_printf("%s", game.map[i]);
 		line = get_next_line(fd);
 		i++;
 	}
@@ -163,7 +158,6 @@ int	main(int argc, char **argv)
 
 	count_collectibles(&game);
 	game.count_steps = 0; 
-	// Deploy background
 	deploy_background(&game);
 	p_reposition(&game);	 
 	//liberar todo antes de salir <(nwn)> (map)

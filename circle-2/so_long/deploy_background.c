@@ -6,7 +6,7 @@
 /*   By: tacampos <tacampos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:10:28 by tacampos          #+#    #+#             */
-/*   Updated: 2024/12/08 18:50:07 by tacampos         ###   ########.fr       */
+/*   Updated: 2024/12/16 21:34:36 by tacampos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int load_images(t_game *game)
     game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr, EXIT_PATH, &x, &y);
     // etc ...
     if (!game->img.player)
-        return ft_printf("Cannot Cannot access images!\n");
+        return ft_printf("Cannot access images!\n");
     if (!game->img.collectable)
-        return ft_printf("Cannot Cannot access images!\n");
+        return ft_printf("Cannot access images!\n");
     if (!game->img.exit)
-        return ft_printf("Cannot Cannot access images!\n");
+        return ft_printf("Cannot access images!\n");
     if (!game->img.walls)
-        return ft_printf("Cannot Cannot access images!\n");
+        return ft_printf("Cannot access images!\n");
         // LIBERAR Y SALIR
     return (EXIT_SUCCESS);
 }   
